@@ -1,0 +1,59 @@
+.heart {
+  pointer-events: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(9, var(--px));
+  grid-template-rows: repeat(8, var(--px));
+}
+
+/* Melayang pelan setelah semua pixel muncul */
+.on .grid {
+  animation: float 4s ease-in-out var(--float-delay) infinite;
+}
+
+.pixel {
+  background: #f5f5f5;
+  opacity: 0;
+  transform: scale(0);
+  transition:
+    opacity 0.15s steps(2),
+    transform 0.2s steps(3);
+}
+
+.dim .pixel {
+  background: #5a5a5a;
+}
+
+.light {
+  background: #ffffff;
+}
+
+.dim .light {
+  background: #8a8a8a;
+}
+
+.on .pixel {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(calc(var(--px) * -1));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel {
+    transition: none;
+  }
+  .on .grid {
+    animation: none;
+  }
+}

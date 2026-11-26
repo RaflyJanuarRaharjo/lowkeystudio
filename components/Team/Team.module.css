@@ -4,6 +4,15 @@
   padding-inline: var(--gutter);
 }
 
+/* Area foto + hati di kiri kanan */
+.stage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1120px;
+}
+
 /* Fade bawah ikut bergerak bersama foto */
 .photoLayer {
   width: 100%;
@@ -18,4 +27,49 @@
   height: auto;
   aspect-ratio: 1600 / 1066;
   object-fit: cover;
+}
+
+/* ---------- Hati pixel ---------- */
+.heartSlot {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Kiri: besar agak atas, kecil lebih bawah & ke luar */
+.heartL1 {
+  left: 2%;
+  top: 22%;
+}
+.heartL2 {
+  left: 10%;
+  top: 58%;
+}
+
+/* Kanan: sedang agak atas, kecil di bawah */
+.heartR1 {
+  right: 3%;
+  top: 34%;
+}
+.heartR2 {
+  right: 0;
+  top: 12%;
+}
+
+@media (max-width: 1100px) {
+  .heartL1 {
+    left: -2%;
+  }
+  .heartR1 {
+    right: -2%;
+  }
+  .heartL2,
+  .heartR2 {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .heartSlot {
+    display: none;
+  }
 }
