@@ -1,30 +1,19 @@
 import { ASSETS, MISSION } from "@/data/content";
 import { FadeIn } from "@/components/effects";
+import Signature from "./Signature";
 import styles from "./Mission.module.css";
-
-function SignatureBlock({ name, role }: { name: string; role: string }) {
-  return (
-    <div className={styles.signatureBlock}>
-      <div className={styles.signature}>
-        <img src={ASSETS.signature} alt={`${name} signature`} width={140} height={248} />
-      </div>
-      <p className={styles.name}>{name}</p>
-      <p className={styles.role}>{role}</p>
-    </div>
-  );
-}
 
 export default function Mission() {
   const [first, second] = MISSION.founders;
 
   return (
-    <section className={`container ${styles.mission}`}>
+    <div className={`container ${styles.mission}`}>
       <FadeIn as="p" className={styles.text}>
         {MISSION.text}
       </FadeIn>
 
       <div className={styles.row}>
-        <SignatureBlock {...first} />
+        <Signature {...first} />
 
         <div className={styles.review}>
           <div className={styles.fastwork}>
@@ -36,8 +25,8 @@ export default function Mission() {
           </div>
         </div>
 
-        <SignatureBlock {...second} />
+        <Signature {...second} delay={600} />
       </div>
-    </section>
+    </div>
   );
 }

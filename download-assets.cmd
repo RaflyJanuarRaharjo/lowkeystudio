@@ -11,8 +11,8 @@ curl -sSL -o "%D%\chevron-down.svg"             %P%/053af.svg
 curl -sSL -o "%D%\chevron-up.svg"               %P%/a1d5d.svg
 curl -sSL -o "%D%\dropdown-preview.png"         %P%/7b343.png
 curl -sSL -o "%D%\fastwork.png"                 %P%/f09a1.png
-curl -sSL -o "%D%\team-1.png"                   %P%/93152.png
-curl -sSL -o "%D%\team-2.png"                   %P%/f618a.png
+curl -sSL -o "%D%\team-1.png"                   https://www.figma.com/api/mcp/asset/a71b12a6-2387-4974-a487-48a79038351d.png
+curl -sSL -o "%D%\team-2.png"                   https://www.figma.com/api/mcp/asset/1968a1a5-f0f1-49bf-a2a8-3b4a6657c935.png
 curl -sSL -o "%D%\project-kala-living.png"      %P%/47150.png
 curl -sSL -o "%D%\project-aurora-rebrand.png"   %P%/dfb2b.png
 curl -sSL -o "%D%\project-fintra-dashboard.png" %P%/21120.png

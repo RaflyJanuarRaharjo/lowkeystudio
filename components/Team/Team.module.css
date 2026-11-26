@@ -3,33 +3,63 @@
   display: flex;
   justify-content: center;
   height: 364px;
-  margin-top: 179px;
   overflow: hidden;
 }
 
-.icons {
+/* ---------- Slider ikon (marquee) ---------- */
+.marquee {
   position: absolute;
   top: 132px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.iconSet {
   display: flex;
   gap: 24px;
+  padding-right: 24px; /* jarak antar set = gap, supaya loop mulus */
   list-style: none;
 }
 
-.icons img {
-  width: 100px;
-  height: 100px;
+.iconSet li {
+  flex-shrink: 0;
 }
 
+.iconSet img {
+  width: 100px;
+  height: 100px;
+  max-width: none;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}
+
+/* ---------- Foto ---------- */
 .photos {
-  position: relative; /* di atas ikon */
+  position: relative; /* di atas slider */
   display: flex;
   gap: 12px;
 }
 
 .photo {
   height: 364px;
+  max-width: none;
 }
 
 .fade {
@@ -40,7 +70,7 @@
 }
 
 @media (max-width: 700px) {
-  .photo:last-child {
+  .photos > :last-child {
     display: none;
   }
 }

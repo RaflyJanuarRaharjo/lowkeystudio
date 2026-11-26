@@ -37,9 +37,9 @@ export const ASSETS = {
   tailRight: asset("tail-right.svg"),
   arrow: asset("arrow.svg"),
   teamPhotos: [
-    // fit mengikuti Figma: foto 1 "cover", foto 2 utuh tanpa distorsi, rata bawah
+    // File foto sudah di-crop langsung dari Figma (rasio sama dengan kotaknya)
     { src: asset("team-1.png"), width: 273, fit: "cover", position: "center" },
-    { src: asset("team-2.png"), width: 326, fit: "contain", position: "bottom" },
+    { src: asset("team-2.png"), width: 326, fit: "cover", position: "center" },
   ] as TeamPhoto[],
 };
 

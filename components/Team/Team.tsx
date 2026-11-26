@@ -2,17 +2,28 @@ import { ASSETS, TOOL_ICONS } from "@/data/content";
 import { PixelReveal } from "@/components/effects";
 import styles from "./Team.module.css";
 
+function IconSet({ hidden = false }: { hidden?: boolean }) {
+  return (
+    <ul className={styles.iconSet} aria-hidden={hidden || undefined}>
+      {TOOL_ICONS.map((src, i) => (
+        <li key={i}>
+          <img src={src} alt="" width={100} height={100} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export default function Team() {
   return (
-    <section className={styles.team}>
-      {/* Baris ikon tools — di belakang foto */}
-      <ul className={styles.icons} aria-label="Tools we use">
-        {TOOL_ICONS.map((src, i) => (
-          <li key={i}>
-            <img src={src} alt="" width={100} height={100} />
-          </li>
-        ))}
-      </ul>
+    <div className={styles.team}>
+      {/* Slider ikon tools (infinite marquee) — di belakang foto */}
+      <div className={styles.marquee} aria-label="Tools we use">
+        <div className={styles.track}>
+          <IconSet />
+          <IconSet hidden /> {/* duplikat supaya loop mulus */}
+        </div>
+      </div>
 
       {/* Foto tim — muncul dengan efek pixel */}
       <div className={styles.photos}>
@@ -32,6 +43,6 @@ export default function Team() {
 
       {/* Fade ke background */}
       <div className={styles.fade} aria-hidden="true" />
-    </section>
+    </div>
   );
 }
