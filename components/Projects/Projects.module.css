@@ -1,8 +1,13 @@
 .projects {
+  scroll-margin-top: 120px;
   display: flex;
   flex-direction: column;
   gap: 40px;
   margin-top: 200px;
+}
+
+.header {
+  margin-bottom: 40px;
 }
 
 /* ---------- Toolbar ---------- */

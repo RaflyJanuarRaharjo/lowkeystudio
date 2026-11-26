@@ -57,32 +57,54 @@ export const SERVICES = [
     title: "Branding",
     description: "Identity & logo systems",
     summary: "A clear, ownable identity that feels established from day one.",
+    image: asset("project-aurora-rebrand.png"),
     tags: ["Logo & wordmark", "Visual identity", "Brand guidelines"],
   },
   {
     title: "Websites",
     description: "Sites & landing pages",
     summary: "Fast, considered sites that explain what you do and turn visits into calls.",
+    image: asset("project-kala-living.png"),
     tags: ["Landing pages", "Company sites", "Webflow / Next.js"],
   },
   {
     title: "Mobile Apps",
     description: "Calm, clear product UI",
     summary: "Product design that stays out of the way and lets people get things done.",
+    image: asset("project-fintra-dashboard.png"),
     tags: ["UX flows", "UI design", "Design systems"],
   },
   {
     title: "Motion",
     description: "Brand & interface animation",
     summary: "Movement that gives your brand and product a bit of personality.",
+    image: asset("project-nomad-coffee.png"),
     tags: ["Logo animation", "UI micro-interactions", "Launch videos"],
   },
 ];
 
-export const SERVICES_SECTION = {
-  eyebrow: "Services",
-  title: "What we do",
-  intro: "Small team, end to end. We take a few projects at a time and see each one through from first sketch to launch.",
+/* ---------- Header tiap section ---------- */
+export const SECTION_HEADERS = {
+  about: {
+    eyebrow: "About",
+    title: "Who we are",
+    intro: "Two founders, one small studio. We keep the team tight so every project gets our full attention.",
+  },
+  services: {
+    eyebrow: "Services",
+    title: "What we do",
+    intro: "Small team, end to end. We take a few projects at a time and see each one through from first sketch to launch.",
+  },
+  work: {
+    eyebrow: "Work",
+    title: "Selected projects",
+    intro: "A few things we've shipped recently — brands, sites and products for founders we love working with.",
+  },
+  testimonials: {
+    eyebrow: "Testimonials",
+    title: "What clients say",
+    intro: "Real messages from the founders we've worked with, straight from our chats.",
+  },
 };
 
 /* ---------- Hero ---------- */

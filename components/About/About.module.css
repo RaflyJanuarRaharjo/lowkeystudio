@@ -1,11 +1,18 @@
 .about {
-  padding-top: 320px;
+  padding-top: 240px;
   padding-bottom: 200px;
+}
+
+.header {
+  margin-bottom: 160px;
 }
 
 @media (max-width: 900px) {
   .about {
     padding-top: 160px;
     padding-bottom: 120px;
+  }
+  .header {
+    margin-bottom: 80px;
   }
 }

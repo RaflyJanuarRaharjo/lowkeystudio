@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FILTERS, PROJECTS } from "@/data/content";
+import { FILTERS, PROJECTS, SECTION_HEADERS } from "@/data/content";
+import SectionHeader from "@/components/ui/SectionHeader";
 import Pill from "@/components/ui/Pill";
 import { FadeIn } from "@/components/effects";
 import ProjectCard from "./ProjectCard";
@@ -22,6 +23,8 @@ export default function Projects() {
 
   return (
     <section id="portfolio" className={styles.projects}>
+      <SectionHeader {...SECTION_HEADERS.work} className={`container ${styles.header}`} />
+
       <FadeIn className={`container ${styles.toolbar}`}>
         <Pill onClick={toggleSort} aria-label={`Sort: ${sort}`}>
           <span className={styles.sortLabel}>Sort</span>
