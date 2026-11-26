@@ -1,29 +1,28 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ASSETS, type Message } from "@/data/content";
+import { ASSETS, type ChatItem, type Person } from "@/data/content";
 import useInView from "@/hooks/useInView";
+import Avatar from "./Avatar";
 import styles from "./Testimonials.module.css";
 
 const TYPING_DURATION = 900; // ms
-const STAGGER = 500; // jeda antar pesan
+const STAGGER = 600; // jeda antar pesan
 
 type State = "hidden" | "typing" | "message";
-type Props = Message & { index?: number };
+type Props = { item: ChatItem; person: Person; side: "left" | "right"; index?: number };
 
 /**
- * Testimonial bergaya chat.
- * Sesuai catatan komponen di Figma: tampil "Typing" saat masuk viewport,
- * lalu berganti ke "Message". Side kiri/kanan bergantian.
+ * Satu pesan chat. Saat terlihat: muncul "mengetik..." dulu, lalu isi pesan
+ * (teks, file, atau review bintang 5).
  */
-export default function ChatMessage({ side, name, company, initial, color, text, index = 0 }: Props) {
-  const [ref, inView] = useInView<HTMLDivElement>(0.4);
+export default function ChatMessage({ item, person, side, index = 0 }: Props) {
+  const [ref, inView] = useInView<HTMLDivElement>(0.2);
   const [state, setState] = useState<State>("hidden");
 
   useEffect(() => {
     if (!inView) return;
 
-    // Hormati setting reduced motion: langsung tampilkan pesan
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setState("message");
       return;
@@ -39,6 +38,32 @@ export default function ChatMessage({ side, name, company, initial, color, text,
 
   const isRight = side === "right";
 
+  const content = () => {
+    if (item.kind === "file") {
+      return (
+        <div className={styles.file}>
+          <span className={styles.fileIcon} aria-hidden="true" />
+          <div>
+            <p className={styles.fileName}>{item.fileName}</p>
+            <p className={styles.fileMeta}>{item.fileMeta}</p>
+          </div>
+        </div>
+      );
+    }
+    if (item.kind === "review") {
+      return (
+        <div className={styles.review}>
+          <p className={styles.reviewHead}>
+            <span className={styles.stars}>★★★★★</span>
+            <span className={styles.reviewLabel}>Review</span>
+          </p>
+          <p className={styles.text}>{item.text}</p>
+        </div>
+      );
+    }
+    return <p className={styles.text}>{item.text}</p>;
+  };
+
   return (
     <div
       ref={ref}
@@ -47,16 +72,14 @@ export default function ChatMessage({ side, name, company, initial, color, text,
       }`}
     >
       <p className={styles.label}>
-        <span className={styles.labelName}>{name}</span>
-        <span className={styles.labelCompany}>{company}</span>
+        <span className={styles.labelName}>{person.name}</span>
+        <span className={styles.labelCompany}>{person.company}</span>
       </p>
 
       <div className={styles.row}>
-        <span className={styles.avatar} style={{ background: color }} aria-hidden="true">
-          {initial}
-        </span>
+        <Avatar person={person} size={40} />
 
-        <div className={styles.bubble}>
+        <div className={`${styles.bubble} ${item.kind === "review" ? styles.bubbleReview : ""}`}>
           {state === "typing" ? (
             <span className={styles.typing} aria-label="typing">
               <i />
@@ -64,7 +87,7 @@ export default function ChatMessage({ side, name, company, initial, color, text,
               <i />
             </span>
           ) : (
-            <p className={styles.text}>{text}</p>
+            content()
           )}
           <img
             src={isRight ? ASSETS.tailRight : ASSETS.tailLeft}

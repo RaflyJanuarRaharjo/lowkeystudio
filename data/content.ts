@@ -14,14 +14,19 @@ export type Project = {
   tagline: string;
   summary: string;
 };
-export type Message = {
-  side: "left" | "right";
+export type Person = {
   name: string;
   company: string;
+  /** Foto avatar (opsional). Kalau kosong, pakai inisial + warna. */
+  photo?: string;
   initial: string;
   color: string;
-  text: string;
 };
+export type ChatItem =
+  | { from: string; kind: "text"; text: string }
+  | { from: string; kind: "file"; fileName: string; fileMeta: string }
+  | { from: string; kind: "review"; text: string };
+export type Conversation = { client: string; project: string; messages: ChatItem[] };
 
 const asset = (name: string) => `/assets/${name}`;
 
@@ -100,8 +105,8 @@ export const SECTION_HEADERS = {
     intro: "Small team, end to end. We take a few projects at a time and see each one through from first sketch to launch.",
   },
   testimonials: {
-    eyebrow: "Testimonials",
-    title: "What clients say",
+    eyebrow: "Straight from the DMs",
+    title: "What our clients said when nobody asked them to",
     intro: "Real messages from the founders we've worked with, straight from our chats.",
   },
   faq: {
@@ -203,47 +208,54 @@ export const PROJECTS: Project[] = [
 ];
 
 /* ---------- Testimonials ---------- */
-// side: "left" = klien, "right" = studio
-export const MESSAGES: Message[] = [
+// Orang-orang di chat. Tambahkan `photo: asset("nama-file.jpg")` untuk pakai foto.
+export const PEOPLE: Record<string, Person> = {
+  rafly: { name: "Rafly", company: "Lowkey Studio", photo: asset("avatar-rafly.jpg"), initial: "R", color: "#3f8f3a" },
+  nara: { name: "Nara", company: "Lowkey Studio", photo: asset("avatar-nara.jpg"), initial: "N", color: "#ff8f2e" },
+  // TODO: tambahkan foto klien (taruh di public/assets lalu isi `photo`)
+  maya: { name: "Maya", company: "Aurora Labs", initial: "M", color: "#b04ce6" },
+  laila: { name: "Laila", company: "Nomad Coffee", initial: "L", color: "#e5304a" },
+  kev: { name: "Kev", company: "Fintra", initial: "K", color: "#5b8def" },
+};
+
+// Isi diambil dari frame "Testimonial Convo 1–3" di Figma.
+// `from`: key di PEOPLE. Pesan dari orang Lowkey Studio tampil di kanan.
+export const CONVERSATIONS: Conversation[] = [
   {
-    side: "left",
-    name: "Maya",
-    company: "Aurora",
-    initial: "M",
-    color: "#b04ce6",
-    text: "wait this is so much better than what we had in our heads. the little pixel thing on the packaging is my favourite bit",
+    client: "maya",
+    project: "Brand identity",
+    messages: [
+      { from: "maya", kind: "text", text: "hey! any chance we can see the logo options before friday? the team is getting impatient lol" },
+      { from: "rafly", kind: "text", text: "Yep, just finished cleaning them up. Sending now" },
+      { from: "rafly", kind: "file", fileName: "Aurora_Logo_Round2.pdf", fileMeta: "4.2 MB · PDF" },
+      { from: "maya", kind: "text", text: "ok option B. it's option B. not even close" },
+      { from: "rafly", kind: "text", text: "Thought you'd say that 😄 I'll build the full system around it this week" },
+      { from: "maya", kind: "review", text: "Honestly the smoothest branding project we've done. You got what we were going for faster than we could explain it." },
+    ],
   },
   {
-    side: "right",
-    name: "Rafly",
-    company: "lowkey studio",
-    initial: "R",
-    color: "#3f8f3a",
-    text: "Went through everything on desktop and mobile. The case study pages feel really solid, thanks for turning it around so fast",
+    client: "laila",
+    project: "Packaging",
+    messages: [
+      { from: "laila", kind: "text", text: "quick one, can the bag label work on kraft paper too? our supplier just switched" },
+      { from: "nara", kind: "text", text: "Good catch. I tried it on kraft, here's the mockup" },
+      { from: "nara", kind: "file", fileName: "Nomad_Label_Kraft.png", fileMeta: "2.8 MB · PNG" },
+      { from: "laila", kind: "text", text: "wait that's even better than the white version??" },
+      { from: "nara", kind: "text", text: "Agreed. Print files are ready whenever you are" },
+      { from: "laila", kind: "review", text: "Online orders went up after the rebrand and people keep asking who did our packaging. I just send them your way now." },
+    ],
   },
   {
-    side: "left",
-    name: "Maya",
-    company: "Aurora",
-    initial: "K",
-    color: "#e5304a",
-    text: "OK WHO DESIGNED THIS. I'm showing my mum",
-  },
-  {
-    side: "right",
-    name: "Rafly",
-    company: "lowkey studio",
-    initial: "R",
-    color: "#ff8f2e",
-    text: "bookings through the site have gone up quite a bit since launch, and people keep mentioning the design when they come in 🙏",
-  },
-  {
-    side: "left",
-    name: "Sarah",
-    company: "Aurora",
-    initial: "S",
-    color: "#5b8def",
-    text: "obsessed. can we just use the orange for everything lol",
+    client: "kev",
+    project: "Product design",
+    messages: [
+      { from: "kev", kind: "text", text: "investors want to see the dashboard before the call tomorrow. is that doable?" },
+      { from: "rafly", kind: "text", text: "Doable. Mobile is done, desktop in a couple of hours" },
+      { from: "rafly", kind: "file", fileName: "Fintra_Dashboard_v3.fig", fileMeta: "Figma file · 18 frames" },
+      { from: "kev", kind: "text", text: "just walked the team through it. nobody had notes. that never happens" },
+      { from: "rafly", kind: "text", text: "Good luck tomorrow, tell us how it goes 🙌" },
+      { from: "kev", kind: "review", text: "We closed the round, and the dashboard came up twice in the meeting. Easy to work with, and they actually care how it turns out." },
+    ],
   },
 ];
 
