@@ -22,7 +22,7 @@
   width: 100%;
   max-width: calc(var(--container) - var(--gutter) * 2);
   padding: 6px;
-  border-radius: 22px;
+  border-radius: 0;
   background: transparent;
   box-shadow: none;
   transition:

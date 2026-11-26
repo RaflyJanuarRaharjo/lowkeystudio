@@ -97,7 +97,7 @@
   flex-shrink: 0;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 0;
   font-family: var(--font-inter);
   font-weight: 600;
   font-size: 16px;
@@ -107,7 +107,7 @@
   position: relative;
   max-width: 460px;
   padding: 12px 18px 13px;
-  border-radius: 22px;
+  border-radius: 0;
   background: var(--color-bubble-in);
 }
 
@@ -146,7 +146,7 @@
 .typing i {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.6);
   animation: blink 1s infinite ease-in-out;
 }

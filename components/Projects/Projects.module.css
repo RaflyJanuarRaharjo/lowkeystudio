@@ -95,7 +95,7 @@
 .chipThumb {
   width: clamp(36px, 2.78vw, 52px);
   height: clamp(36px, 2.78vw, 52px);
-  border-radius: 2px;
+  border-radius: 0;
   object-fit: cover;
   flex-shrink: 0;
 }
@@ -129,7 +129,7 @@
   position: relative;
   display: block;
   height: var(--item-height); /* sama dengan tinggi info di kiri */
-  border-radius: 6px;
+  border-radius: 0;
   overflow: hidden;
   background: var(--color-card);
   cursor: none; /* diganti label "View case" */
@@ -169,7 +169,7 @@
   align-items: center;
   gap: 8px;
   padding: 6px 8px;
-  border-radius: 2px;
+  border-radius: 0;
   background: #000;
   color: #fff;
   font-family: var(--font-mono);
@@ -204,7 +204,7 @@
   justify-content: flex-end;
   aspect-ratio: 922 / 168;
   padding: 36px;
-  border-radius: 6px;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.1);
   transition: background 0.3s ease;
 }
