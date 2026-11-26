@@ -1,5 +1,5 @@
 import { ASSETS, TOOL_ICONS } from "@/data/content";
-import { PixelReveal } from "@/components/effects";
+import { Parallax, PixelReveal } from "@/components/effects";
 import styles from "./Team.module.css";
 
 function IconSet({ hidden = false }: { hidden?: boolean }) {
@@ -19,14 +19,16 @@ export default function Team() {
     <div className={styles.team}>
       {/* Slider ikon tools (infinite marquee) — di belakang foto */}
       <div className={styles.marquee} aria-label="Tools we use">
-        <div className={styles.track}>
-          <IconSet />
-          <IconSet hidden /> {/* duplikat supaya loop mulus */}
-        </div>
+        <Parallax speed={-0.04}>
+          <div className={styles.track}>
+            <IconSet />
+            <IconSet hidden /> {/* duplikat supaya loop mulus */}
+          </div>
+        </Parallax>
       </div>
 
-      {/* Foto tim — muncul dengan efek pixel */}
-      <div className={styles.photos}>
+      {/* Foto tim — efek pixel + parallax (bergerak beda kecepatan dari slider) */}
+      <Parallax speed={0.06} className={styles.photos}>
         {ASSETS.teamPhotos.map((photo, i) => (
           <PixelReveal key={i} delay={i * 200} tileSize={24}>
             <img
@@ -39,10 +41,7 @@ export default function Team() {
             />
           </PixelReveal>
         ))}
-      </div>
-
-      {/* Fade ke background */}
-      <div className={styles.fade} aria-hidden="true" />
+      </Parallax>
     </div>
   );
 }

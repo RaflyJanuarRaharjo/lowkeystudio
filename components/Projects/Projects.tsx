@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { FILTERS, PROJECTS } from "@/data/content";
 import Pill from "@/components/ui/Pill";
+import { FadeIn } from "@/components/effects";
 import ProjectCard from "./ProjectCard";
 import styles from "./Projects.module.css";
 
@@ -21,7 +22,7 @@ export default function Projects() {
 
   return (
     <section id="portfolio" className={styles.projects}>
-      <div className={`container ${styles.toolbar}`}>
+      <FadeIn className={`container ${styles.toolbar}`}>
         <Pill onClick={toggleSort} aria-label={`Sort: ${sort}`}>
           <span className={styles.sortLabel}>Sort</span>
           <span className={styles.sortValue}>{sort} ▾</span>
@@ -41,11 +42,14 @@ export default function Projects() {
         </div>
 
         <Pill href="#portfolio">View all project</Pill>
-      </div>
+      </FadeIn>
 
       <div className={`container ${styles.grid}`}>
-        {visibleProjects.map((project) => (
-          <ProjectCard key={project.title} {...project} />
+        {visibleProjects.map((project, i) => (
+          // Kartu muncul bergantian kiri-kanan (stagger)
+          <FadeIn key={project.title} delay={(i % 2) * 150}>
+            <ProjectCard {...project} />
+          </FadeIn>
         ))}
       </div>
     </section>

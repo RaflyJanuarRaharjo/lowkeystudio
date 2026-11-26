@@ -1,4 +1,5 @@
 import { ASSETS, MESSAGES } from "@/data/content";
+import { FadeIn } from "@/components/effects";
 import ChatMessage from "./ChatMessage";
 import styles from "./Testimonials.module.css";
 
@@ -13,14 +14,14 @@ export default function Testimonials() {
         ))}
       </div>
 
-      <div className={styles.controls}>
+      <FadeIn className={styles.controls} delay={300}>
         <button type="button" className={`${styles.arrowBtn} ${styles.prev}`} aria-label="Previous">
           <img src={ASSETS.arrow} alt="" width={16} height={16} />
         </button>
         <button type="button" className={styles.arrowBtn} aria-label="Next">
           <img src={ASSETS.arrow} alt="" width={16} height={16} />
         </button>
-      </div>
+      </FadeIn>
     </section>
   );
 }

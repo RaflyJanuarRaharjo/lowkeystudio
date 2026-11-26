@@ -8,7 +8,7 @@
 .showcase {
   position: relative;
   height: 300vh;
-  margin-top: 89px;
+  margin-top: 40px; /* jarak dari teks hero */
 }
 
 .sticky {
@@ -20,12 +20,13 @@
 
 .frame {
   --inset-x: 0%;
-  --inset-y: 24%;
+  --inset-top: 4%;
+  --inset-bottom: 40%;
   --radius: 0px;
   --zoom: 1.25;
   position: absolute;
   inset: 0;
-  clip-path: inset(var(--inset-y) var(--inset-x) round var(--radius));
+  clip-path: inset(var(--inset-top) var(--inset-x) var(--inset-bottom) round var(--radius));
   will-change: clip-path;
 }
 

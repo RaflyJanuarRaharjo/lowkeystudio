@@ -2,31 +2,31 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding-top: 172px; /* ruang untuk navbar fixed */
+  padding-top: 260px; /* ruang untuk navbar fixed + turun sedikit */
 }
 
 .title {
   font-family: var(--font-geist);
   font-weight: 500;
-  font-size: 40px;
-  letter-spacing: -0.4px;
+  font-size: 32px;
+  letter-spacing: -0.32px;
   line-height: normal;
 }
 
 .subtitle {
-  font-size: 24px;
-  letter-spacing: -0.24px;
+  font-size: 20px;
+  letter-spacing: -0.2px;
   color: var(--color-neutral-200);
 }
 
 @media (max-width: 900px) {
   .hero {
-    padding-top: 120px;
+    padding-top: 160px;
   }
   .title {
-    font-size: 32px;
+    font-size: 26px;
   }
   .subtitle {
-    font-size: 18px;
+    font-size: 16px;
   }
 }

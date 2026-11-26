@@ -1,14 +1,15 @@
 import { ASSETS, SERVICES } from "@/data/content";
 import styles from "./Navbar.module.css";
 
-type Props = { id: string; open: boolean };
+type Props = { id: string; open: boolean; left?: number | null };
 
-export default function ServicesDropdown({ id, open }: Props) {
+export default function ServicesDropdown({ id, open, left }: Props) {
   return (
     <div
       id={id}
       className={`${styles.dropdown} ${open ? styles.dropdownOpen : ""}`}
       aria-hidden={!open}
+      style={left != null ? { left } : undefined}
     >
       <ul className={styles.dropdownList}>
         {SERVICES.map((item) => (
