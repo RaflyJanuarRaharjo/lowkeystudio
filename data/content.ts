@@ -51,12 +51,39 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Testimonial", href: "#testimonial" },
 ];
 
+// Dipakai di dropdown navbar (title + description) dan section Services (semua field)
 export const SERVICES = [
-  { title: "Branding", description: "Identity & logo systems" },
-  { title: "Websites", description: "Sites & landing pages" },
-  { title: "Mobile Apps", description: "Calm, clear product UI" },
-  { title: "Motion", description: "Brand & interface animation" },
+  {
+    title: "Branding",
+    description: "Identity & logo systems",
+    summary: "A clear, ownable identity that feels established from day one.",
+    tags: ["Logo & wordmark", "Visual identity", "Brand guidelines"],
+  },
+  {
+    title: "Websites",
+    description: "Sites & landing pages",
+    summary: "Fast, considered sites that explain what you do and turn visits into calls.",
+    tags: ["Landing pages", "Company sites", "Webflow / Next.js"],
+  },
+  {
+    title: "Mobile Apps",
+    description: "Calm, clear product UI",
+    summary: "Product design that stays out of the way and lets people get things done.",
+    tags: ["UX flows", "UI design", "Design systems"],
+  },
+  {
+    title: "Motion",
+    description: "Brand & interface animation",
+    summary: "Movement that gives your brand and product a bit of personality.",
+    tags: ["Logo animation", "UI micro-interactions", "Launch videos"],
+  },
 ];
+
+export const SERVICES_SECTION = {
+  eyebrow: "Services",
+  title: "What we do",
+  intro: "Small team, end to end. We take a few projects at a time and see each one through from first sketch to launch.",
+};
 
 /* ---------- Hero ---------- */
 export const HERO = {
