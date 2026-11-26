@@ -7,10 +7,10 @@ const PHOTO_SPEED = 0.08;
 
 // Hati pixel di kiri & kanan foto (posisi diatur di CSS lewat className)
 const HEARTS = [
-  { key: "l1", className: styles.heartL1, pixel: 12, delay: 300, seed: 1.3, speed: -0.12, dim: false },
-  { key: "l2", className: styles.heartL2, pixel: 6, delay: 700, seed: 2.7, speed: -0.25, dim: true },
-  { key: "r1", className: styles.heartR1, pixel: 10, delay: 500, seed: 3.1, speed: -0.18, dim: false },
-  { key: "r2", className: styles.heartR2, pixel: 5, delay: 900, seed: 4.9, speed: -0.3, dim: true },
+  { key: "l1", className: styles.heartL1, pixel: 12, delay: 300, seed: 1.3, speed: -0.06, dim: false },
+  { key: "l2", className: styles.heartL2, pixel: 6, delay: 700, seed: 2.7, speed: -0.1, dim: true },
+  { key: "r1", className: styles.heartR1, pixel: 10, delay: 500, seed: 3.1, speed: -0.08, dim: false },
+  { key: "r2", className: styles.heartR2, pixel: 5, delay: 900, seed: 4.9, speed: -0.12, dim: true },
 ];
 
 export default function Team() {

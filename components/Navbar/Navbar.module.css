@@ -195,14 +195,204 @@
   transform: scale(1);
 }
 
+/* ---------- Mobile ---------- */
+.burger {
+  display: none;
+}
+
+.mobileMenu {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .header {
     padding: 16px;
   }
-  .links {
+  .links,
+  .dropdown {
     display: none;
   }
-  .dropdown {
+
+  /* Di mobile navbar selalu selebar layar (tidak menyusut jadi pill) */
+  .nav,
+  .scrolled .nav {
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+  }
+  .scrolled .nav,
+  .mobileOpen .nav {
+    background: var(--color-surface);
+    box-shadow: var(--shadow-nav);
+  }
+
+  .logo img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .right {
+    gap: 6px;
+  }
+
+  .contact {
+    padding: 11px 16px;
+    font-size: 14px;
+  }
+
+  /* Hamburger kotak: 2 garis → X */
+  .burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    width: 40px;
+    height: 40px;
+    background: var(--color-text);
+  }
+  .burger span {
+    display: block;
+    width: 16px;
+    height: 2px;
+    background: #000;
+    transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .mobileOpen .burger span:first-child {
+    transform: translateY(4px) rotate(45deg);
+  }
+  .mobileOpen .burger span:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+
+  /* Panel menu layar penuh */
+  .mobileMenu {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 104px 16px 24px;
+    overflow-y: auto;
+    background: var(--color-bg);
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .mobileOpen .mobileMenu {
+    pointer-events: auto;
+    clip-path: inset(0 0 0 0);
+  }
+
+  .mobileList {
+    list-style: none;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .mobileItem {
+    border-bottom: 1px solid var(--color-border);
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.35s ease,
+      transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .mobileOpen .mobileItem {
+    opacity: 1;
+    transform: none;
+  }
+
+  .mobileLink {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    width: 100%;
+    padding: 20px 0;
+    font-family: var(--font-geist);
+    font-size: 32px;
+    letter-spacing: -0.03em;
+    color: var(--color-text);
+    text-align: left;
+  }
+
+  .mobileIndex {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-text-faint);
+  }
+
+  /* Ikon + kotak yang berubah jadi − */
+  .mobilePlus {
+    position: relative;
+    align-self: center;
+    width: 14px;
+    height: 14px;
+    margin-left: auto;
+  }
+  .mobilePlus::before,
+  .mobilePlus::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 14px;
+    height: 2px;
+    background: var(--color-text-muted);
+    transition: transform 0.3s ease;
+  }
+  .mobilePlus::after {
+    transform: rotate(90deg);
+  }
+  .mobilePlusOpen::after {
+    transform: rotate(0deg);
+  }
+
+  .mobileSub {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+  }
+  .mobileSubOpen {
+    grid-template-rows: 1fr;
+  }
+  .mobileSub ul {
+    overflow: hidden;
+    list-style: none;
+  }
+  .mobileSub a {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0 10px 36px;
+    font-size: 17px;
+    color: var(--color-text);
+  }
+  .mobileSub li:last-child a {
+    padding-bottom: 20px;
+  }
+  .mobileSubDesc {
+    font-size: 14px;
+    color: var(--color-text-subtle);
+    text-align: right;
+  }
+
+  .mobileContact {
+    display: block;
+    padding: 18px;
+    background: var(--color-text);
+    color: #000;
+    font-family: var(--font-jakarta);
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+/* Mobile: Contact Us pindah ke dalam menu hamburger */
+@media (max-width: 900px) {
+  .right .contact {
     display: none;
   }
 }

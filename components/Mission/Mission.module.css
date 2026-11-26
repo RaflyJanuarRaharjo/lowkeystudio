@@ -15,12 +15,22 @@
   text-align: center;
 }
 
+/* Lebar asli baris di Figma: 248 + 322 + 248 + gap 2×40 = 898px.
+   --u = 1px di layar lebar, mengecil proporsional di layar kecil
+   (semua ukuran di bawah ditulis "angka Figma × var(--u)"). */
+.rowWrap {
+  container-type: inline-size;
+  width: 100%;
+  max-width: 898px;
+}
+
 .row {
+  --u: min(1px, calc(100cqw / 898));
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: calc(40 * var(--u));
 }
 
 /* ---------- Signature ---------- */
@@ -28,15 +38,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: calc(12 * var(--u));
+  width: calc(248 * var(--u));
+  flex-shrink: 0;
+  text-align: center;
 }
 
 .signature {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 248px;
-  height: 140px;
+  width: calc(248 * var(--u));
+  height: calc(140 * var(--u));
 
   /* Efek "ditulis tangan": mask bergerak dari kiri ke kanan */
   -webkit-mask-image: linear-gradient(90deg, #000 45%, transparent 55%);
@@ -66,8 +79,8 @@
 
 /* File signature aslinya portrait (140×248), diputar -90° seperti di Figma */
 .signature img {
-  width: 140px;
-  height: 248px;
+  width: calc(140 * var(--u));
+  height: calc(248 * var(--u));
   max-width: none;
   transform: rotate(-90deg);
 }
@@ -75,12 +88,12 @@
 .name {
   font-family: var(--font-inter);
   font-weight: 600;
-  font-size: 17px;
+  font-size: max(11px, calc(17 * var(--u)));
 }
 
 .role {
   font-family: var(--font-inter);
-  font-size: 15px;
+  font-size: max(10px, calc(15 * var(--u)));
   color: var(--color-gray);
 }
 
@@ -89,15 +102,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
-  width: 322px;
+  gap: calc(24 * var(--u));
+  width: calc(322 * var(--u));
+  flex-shrink: 0;
 }
 
 /* Crop logo Fastwork sesuai Figma */
 .fastwork {
   position: relative;
-  width: 322px;
-  height: 59px;
+  width: calc(322 * var(--u));
+  height: calc(59 * var(--u));
   overflow: hidden;
 }
 
@@ -112,6 +126,7 @@
 
 .rating {
   display: flex;
+  gap: calc(4 * var(--u));
   flex-direction: column;
   align-items: center;
 }
@@ -119,10 +134,16 @@
 .ratingLabel {
   font-family: var(--font-hanken);
   font-weight: 500;
-  font-size: 24px;
-  line-height: 36px;
-  letter-spacing: -0.48px;
+  font-size: max(12px, calc(24 * var(--u)));
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
   text-align: center;
+}
+
+.rating img {
+  width: calc(176 * var(--u));
+  height: auto;
 }
 
 @media (max-width: 900px) {
