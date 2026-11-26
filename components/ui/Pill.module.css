@@ -1,0 +1,29 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-family: var(--font-inter);
+  font-size: 15px;
+  line-height: normal;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+
+.pill:hover {
+  color: var(--color-text);
+}
+
+.active {
+  background: var(--color-text);
+  border-color: transparent;
+  color: #000;
+}
+
+.active:hover {
+  color: #000;
+}

@@ -1,0 +1,148 @@
+/* ---------- Header + pill ---------- */
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  padding: 32px 64px;
+  pointer-events: none; /* area kosong header tidak menghalangi klik */
+}
+
+.pill {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  border-radius: 22px;
+  background: var(--color-surface);
+  backdrop-filter: blur(50px);
+  box-shadow: var(--shadow-nav);
+}
+
+.logo img {
+  width: 48px;
+  height: 48px;
+  transform: rotate(-0.33deg);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 0 28px;
+  list-style: none;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 0;
+  font-family: var(--font-geist);
+  font-size: 18px;
+  letter-spacing: -0.18px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.link:hover,
+.linkActive {
+  color: var(--color-text);
+}
+
+.chevron {
+  width: 12px;
+  height: 12px;
+}
+
+.contact {
+  padding: 14px 22px;
+  border-radius: var(--radius-lg);
+  background: var(--color-text);
+  color: #000;
+  font-family: var(--font-jakarta);
+  font-weight: 500;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+/* ---------- Services dropdown ---------- */
+.dropdown {
+  pointer-events: auto;
+  position: absolute;
+  top: 112px;
+  left: 50%;
+  display: flex;
+  gap: 8px;
+  padding: 16px;
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-dropdown);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -8px);
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+}
+
+.dropdownOpen {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.dropdownList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+}
+
+.dropdownItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 380px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s;
+}
+
+.dropdownItem:hover,
+.dropdownItem:focus-visible {
+  background: var(--color-hover);
+}
+
+.dropdownTitle {
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.18px;
+  color: var(--color-text);
+}
+
+.dropdownDesc {
+  font-size: 16px;
+  letter-spacing: -0.16px;
+  color: var(--color-text-subtle);
+}
+
+.dropdownPreview {
+  width: 352px;
+  height: 288px;
+  object-fit: cover;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 900px) {
+  .header {
+    padding: 16px;
+  }
+  .links {
+    display: none;
+  }
+  .dropdown {
+    display: none;
+  }
+}

@@ -1,0 +1,116 @@
+/* Design tokens — diambil dari frame Figma "Lowkey" */
+:root {
+  /* Colors */
+  --color-bg: #0a0a0a;
+  --color-surface: #2a2a2a;
+  --color-card: #141414;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: #454545;
+  --color-hover: rgba(255, 255, 255, 0.06);
+
+  --color-text: #ffffff;
+  --color-text-strong: rgba(255, 255, 255, 0.95);
+  --color-text-label: rgba(255, 255, 255, 0.9);
+  --color-text-muted: rgba(255, 255, 255, 0.62);
+  --color-text-subtle: rgba(255, 255, 255, 0.55);
+  --color-text-faint: rgba(255, 255, 255, 0.45);
+  --color-text-dim: rgba(255, 255, 255, 0.4);
+  --color-neutral-200: #e5e5e5;
+  --color-gray: #86868b;
+
+  --color-bubble-in: #26252a;
+  --color-bubble-out: #0a84ff;
+
+  /* Fonts */
+  --font-geist: "Geist", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --font-inter: "Inter", system-ui, sans-serif;
+  --font-jakarta: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-hanken: "Hanken Grotesk", system-ui, sans-serif;
+  --font-sf: -apple-system, "SF Pro Text", BlinkMacSystemFont, "Inter", sans-serif;
+
+  /* Layout */
+  --container: 1440px;
+  --gutter: 80px;
+
+  /* Radius */
+  --radius-sm: 12px;
+  --radius-md: 14px;
+  --radius-lg: 16px;
+  --radius-xl: 18px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-nav: 0 12px 32px rgba(0, 0, 0, 0.25);
+  --shadow-dropdown: 0 20px 48px rgba(0, 0, 0, 0.3);
+  --shadow-preview: 0 16px 32px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 900px) {
+  :root {
+    --gutter: 24px;
+  }
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-geist);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-bubble-out);
+  outline-offset: 2px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

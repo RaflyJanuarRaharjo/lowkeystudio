@@ -1,0 +1,197 @@
+.testimonials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 88px;
+  width: 100%;
+  max-width: 1100px; /* 760px chat + padding 340px dari frame 1440 */
+  margin: 80px auto 0;
+  padding: 140px var(--gutter) 160px;
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  width: 100%;
+  max-width: 760px;
+}
+
+/* ---------- Message ---------- */
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.left {
+  align-items: flex-start;
+}
+
+.right {
+  align-items: flex-end;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* Label: "Maya • Aurora" */
+.label {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.left .label {
+  padding-left: 52px;
+}
+
+.right .label {
+  padding-right: 52px;
+}
+
+.labelName {
+  font-family: var(--font-inter);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text-label);
+}
+
+.labelCompany {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.48px;
+  color: var(--color-text-faint);
+}
+
+.labelCompany::before {
+  content: "•";
+  margin: 0 6px 0 6px;
+}
+
+/* Row: avatar + bubble */
+.row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.right .row {
+  flex-direction: row-reverse;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-family: var(--font-inter);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.bubble {
+  position: relative;
+  max-width: 460px;
+  padding: 12px 18px 13px;
+  border-radius: 22px;
+  background: var(--color-bubble-in);
+}
+
+.right .bubble {
+  background: var(--color-bubble-out);
+}
+
+.text {
+  font-family: var(--font-sf);
+  font-size: 18px;
+  line-height: 1.32;
+}
+
+.tail {
+  position: absolute;
+  bottom: 0;
+  width: 16px;
+  height: 18px;
+}
+
+.left .tail {
+  left: -5px;
+}
+
+.right .tail {
+  right: -5px;
+}
+
+/* Typing indicator */
+.typing {
+  display: flex;
+  gap: 4px;
+  padding: 8px 2px;
+}
+
+.typing i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  animation: blink 1s infinite ease-in-out;
+}
+
+.typing i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typing i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes blink {
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+/* ---------- Arrow controls ---------- */
+.controls {
+  display: flex;
+  gap: 8px;
+}
+
+.arrowBtn {
+  display: flex;
+  padding: 16px;
+  border-radius: var(--radius-pill);
+  background: var(--color-text);
+  transition: transform 0.2s;
+}
+
+.arrowBtn:hover {
+  transform: scale(1.06);
+}
+
+.prev img {
+  transform: scaleX(-1);
+}
+
+@media (max-width: 700px) {
+  .testimonials {
+    padding-block: 80px;
+  }
+  .text {
+    font-size: 16px;
+  }
+}

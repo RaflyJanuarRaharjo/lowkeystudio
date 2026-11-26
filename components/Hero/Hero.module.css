@@ -1,0 +1,32 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 172px; /* ruang untuk navbar fixed */
+}
+
+.title {
+  font-family: var(--font-geist);
+  font-weight: 500;
+  font-size: 40px;
+  letter-spacing: -0.4px;
+  line-height: normal;
+}
+
+.subtitle {
+  font-size: 24px;
+  letter-spacing: -0.24px;
+  color: var(--color-neutral-200);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding-top: 120px;
+  }
+  .title {
+    font-size: 32px;
+  }
+  .subtitle {
+    font-size: 18px;
+  }
+}
