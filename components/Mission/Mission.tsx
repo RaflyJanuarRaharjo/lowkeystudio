@@ -1,5 +1,5 @@
 import { ASSETS, MISSION } from "@/data/content";
-import { FadeIn } from "@/components/effects";
+import { ScrollRevealText } from "@/components/effects";
 import Signature from "./Signature";
 import styles from "./Mission.module.css";
 
@@ -8,9 +8,8 @@ export default function Mission() {
 
   return (
     <div className={`container ${styles.mission}`}>
-      <FadeIn as="p" className={styles.text}>
-        {MISSION.text}
-      </FadeIn>
+      {/* Kata demi kata berubah jadi putih saat di-scroll */}
+      <ScrollRevealText className={styles.text} text={MISSION.text} />
 
       <div className={styles.row}>
         <Signature {...first} />
