@@ -1,28 +1,21 @@
 .team {
-  position: relative;
   display: flex;
   justify-content: center;
-  height: 364px;
+  padding-inline: var(--gutter);
 }
 
-.photos {
-  display: flex;
-  gap: 12px;
-}
-
-/* Fade bawah ikut bergerak bersama tiap foto */
+/* Fade bawah ikut bergerak bersama foto */
 .photoLayer {
-  -webkit-mask-image: linear-gradient(to bottom, #000 61%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 61%, transparent 100%);
+  width: 100%;
+  max-width: 720px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
 }
 
 .photo {
-  height: 364px;
-  max-width: none;
-}
-
-@media (max-width: 700px) {
-  .photos > :last-child {
-    display: none;
-  }
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1600 / 1066;
+  object-fit: cover;
 }

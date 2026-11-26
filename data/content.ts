@@ -25,7 +25,7 @@ export type Message = {
 
 const asset = (name: string) => `/assets/${name}`;
 
-export type TeamPhoto = { src: string; width: number; fit: "cover" | "contain"; position: string };
+export type TeamPhoto = { src: string; alt: string; width: number; height: number };
 
 export const ASSETS = {
   logo: asset("logo-square.svg"), // logo sudut tajam (dibuat ulang dari Figma)
@@ -38,11 +38,13 @@ export const ASSETS = {
   tailLeft: asset("tail-left.svg"),
   tailRight: asset("tail-right.svg"),
   arrow: asset("arrow.svg"),
-  teamPhotos: [
-    // File foto sudah di-crop langsung dari Figma (rasio sama dengan kotaknya)
-    { src: asset("team-1.png"), width: 273, fit: "cover", position: "center" },
-    { src: asset("team-2.png"), width: 326, fit: "cover", position: "center" },
-  ] as TeamPhoto[],
+  // Foto founder di section About (ganti file di public/assets/team-photo.webp)
+  teamPhoto: {
+    src: asset("team-photo.webp"), // tanpa background (transparan)
+    alt: "Nareswari and Rafly, founders of Lowkey Studio",
+    width: 1600,
+    height: 1066,
+  } as TeamPhoto,
 };
 
 /* ---------- Navbar ---------- */
