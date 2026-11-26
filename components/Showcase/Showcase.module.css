@@ -1,7 +1,7 @@
+/* Full-bleed: video selalu selebar layar (sesuai Figma: left 0, right 0) */
 .showcase {
   width: 100%;
-  max-width: var(--container);
-  margin: 89px auto 0;
+  margin-top: 89px;
 }
 
 .video {
