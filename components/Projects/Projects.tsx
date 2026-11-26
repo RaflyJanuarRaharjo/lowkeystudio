@@ -119,7 +119,7 @@ export default function Projects() {
                 itemRefs.current[i] = el;
               }}
               href="#portfolio"
-              className={styles.item}
+              className={`${styles.item} ${i === active ? styles.itemCurrent : ""}`}
               onMouseMove={onMove}
               aria-label={`View case: ${p.title}`}
             >
