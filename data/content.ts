@@ -28,7 +28,7 @@ const asset = (name: string) => `/assets/${name}`;
 export type TeamPhoto = { src: string; width: number; fit: "cover" | "contain"; position: string };
 
 export const ASSETS = {
-  logo: asset("logo-mark.svg"),
+  logo: asset("logo-square.svg"), // logo sudut tajam (dibuat ulang dari Figma)
   chevronDown: asset("chevron-down.svg"),
   chevronUp: asset("chevron-up.svg"),
   dropdownPreview: asset("dropdown-preview.png"),
