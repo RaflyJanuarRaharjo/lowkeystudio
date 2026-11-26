@@ -1,13 +1,46 @@
-/* Full-bleed: video selalu selebar layar (sesuai Figma: left 0, right 0) */
+/*
+ * Expand-on-scroll:
+ * .showcase setinggi 300vh -> memberi jarak scroll untuk animasi + "tertahan".
+ * .sticky menempel di layar selama jarak itu.
+ * .frame dipotong pakai clip-path; nilai --inset-* diubah dari JS saat scroll.
+ * Ubah 300vh untuk mengatur lama video ditahan.
+ */
 .showcase {
-  width: 100%;
+  position: relative;
+  height: 300vh;
   margin-top: 89px;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.frame {
+  --inset-x: 0%;
+  --inset-y: 24%;
+  --radius: 0px;
+  --zoom: 1.25;
+  position: absolute;
+  inset: 0;
+  clip-path: inset(var(--inset-y) var(--inset-x) round var(--radius));
+  will-change: clip-path;
 }
 
 .video {
   display: block;
   width: 100%;
-  aspect-ratio: 1440 / 921;
+  height: 100%;
   object-fit: cover;
-  background: var(--color-bg);
+  background: var(--color-surface);
+  transform: scale(var(--zoom));
+  will-change: transform;
+}
+
+@media (max-width: 900px) {
+  .showcase {
+    height: 220vh;
+  }
 }
