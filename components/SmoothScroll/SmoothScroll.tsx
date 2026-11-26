@@ -10,6 +10,10 @@ export default function SmoothScroll() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const lenis = new Lenis({ autoRaf: true, lerp: 0.1 });
+    // Dipakai Intro untuk menahan scroll selama animasi pembuka
+    (window as unknown as { lenis?: Lenis }).lenis = lenis;
+    if (!window.__lowkeyIntroDone) lenis.stop();
+    window.addEventListener("lowkey:intro-done", () => lenis.start(), { once: true });
     return () => lenis.destroy();
   }, []);
 

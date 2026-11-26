@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type ElementType } from "react";
 import useInView from "@/hooks/useInView";
+import useIntroDone from "@/hooks/useIntroDone";
 import styles from "./effects.module.css";
 
 // Karakter minimal supaya glitch terasa halus, bukan berisik
@@ -14,6 +15,8 @@ type Props = {
   className?: string;
   duration?: number;
   delay?: number;
+  /** Tunggu animasi intro selesai sebelum mulai (untuk teks di hero) */
+  waitForIntro?: boolean;
 };
 
 const randomChar = () => CHARS[Math.floor(Math.random() * CHARS.length)];
@@ -28,8 +31,11 @@ export default function ScrambleText({
   className,
   duration = 900,
   delay = 0,
+  waitForIntro = false,
 }: Props) {
-  const [ref, inView] = useInView<HTMLElement>(0.3);
+  const [ref, isVisible] = useInView<HTMLElement>(0.3);
+  const introDone = useIntroDone();
+  const inView = isVisible && (!waitForIntro || introDone);
   const [revealed, setRevealed] = useState(text.length);
   const [glitch, setGlitch] = useState("");
 
