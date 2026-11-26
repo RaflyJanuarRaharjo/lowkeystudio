@@ -1,11 +1,14 @@
 import { HERO } from "@/data/content";
+import { FadeIn, ScrambleText } from "@/components/effects";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
   return (
     <section id="about" className={`container ${styles.hero}`}>
-      <h1 className={styles.title}>{HERO.title}</h1>
-      <p className={styles.subtitle}>{HERO.subtitle}</p>
+      <ScrambleText as="h1" className={styles.title} text={HERO.title} duration={900} />
+      <FadeIn as="p" className={styles.subtitle} delay={500}>
+        {HERO.subtitle}
+      </FadeIn>
     </section>
   );
 }

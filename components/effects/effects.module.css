@@ -1,0 +1,45 @@
+/* ---------- PixelReveal ---------- */
+.pixelWrap {
+  position: relative;
+}
+
+.pixelCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  image-rendering: pixelated;
+}
+
+/* ---------- ScrambleText ---------- */
+.glitch {
+  opacity: 0.35;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+/* ---------- FadeIn ---------- */
+.fade {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.fadeIn {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

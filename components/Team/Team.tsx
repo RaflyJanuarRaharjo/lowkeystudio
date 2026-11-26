@@ -1,4 +1,5 @@
 import { ASSETS, TOOL_ICONS } from "@/data/content";
+import { PixelReveal } from "@/components/effects";
 import styles from "./Team.module.css";
 
 export default function Team() {
@@ -13,18 +14,19 @@ export default function Team() {
         ))}
       </ul>
 
-      {/* Foto tim */}
+      {/* Foto tim — muncul dengan efek pixel */}
       <div className={styles.photos}>
         {ASSETS.teamPhotos.map((photo, i) => (
-          <img
-            key={i}
-            src={photo.src}
-            alt="Lowkey Studio founder"
-            width={photo.width}
-            height={364}
-            style={{ width: photo.width, objectFit: photo.fit, objectPosition: photo.position }}
-            className={styles.photo}
-          />
+          <PixelReveal key={i} delay={i * 200} tileSize={24}>
+            <img
+              src={photo.src}
+              alt="Lowkey Studio founder"
+              width={photo.width}
+              height={364}
+              style={{ width: photo.width, objectFit: photo.fit, objectPosition: photo.position }}
+              className={styles.photo}
+            />
+          </PixelReveal>
         ))}
       </div>
 

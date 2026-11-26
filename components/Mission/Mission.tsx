@@ -1,4 +1,5 @@
 import { ASSETS, MISSION } from "@/data/content";
+import { FadeIn } from "@/components/effects";
 import styles from "./Mission.module.css";
 
 function SignatureBlock({ name, role }: { name: string; role: string }) {
@@ -18,7 +19,9 @@ export default function Mission() {
 
   return (
     <section className={`container ${styles.mission}`}>
-      <p className={styles.text}>{MISSION.text}</p>
+      <FadeIn as="p" className={styles.text}>
+        {MISSION.text}
+      </FadeIn>
 
       <div className={styles.row}>
         <SignatureBlock {...first} />
