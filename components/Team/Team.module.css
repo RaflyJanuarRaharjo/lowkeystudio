@@ -5,57 +5,13 @@
   height: 364px;
 }
 
-/* ---------- Slider ikon (marquee) ---------- */
-.marquee {
-  position: absolute;
-  top: 92px; /* 132px - padding 40px */
-  padding-block: 40px; /* ruang untuk gerak parallax */
-  left: 0;
-  right: 0;
-  overflow: hidden;
-}
-
-.track {
-  display: flex;
-  width: max-content;
-  animation: marquee 30s linear infinite;
-}
-
-.iconSet {
-  display: flex;
-  gap: 24px;
-  padding-right: 24px; /* jarak antar set = gap, supaya loop mulus */
-  list-style: none;
-}
-
-.iconSet li {
-  flex-shrink: 0;
-}
-
-.iconSet img {
-  width: 100px;
-  height: 100px;
-  max-width: none;
-}
-
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .track {
-    animation: none;
-  }
-}
-
-/* ---------- Foto ---------- */
 .photos {
-  position: relative; /* di atas slider */
   display: flex;
   gap: 12px;
-  /* Fade bawah ikut bergerak bersama foto */
+}
+
+/* Fade bawah ikut bergerak bersama tiap foto */
+.photoLayer {
   -webkit-mask-image: linear-gradient(to bottom, #000 61%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000 61%, transparent 100%);
 }

@@ -65,19 +65,6 @@ export const HERO = {
     "From brands to digital products, we turn ideas into experiences that connect and inspire",
 };
 
-/* ---------- Team / tools strip ---------- */
-export const TOOL_ICONS = [
-  "app-0924.svg",
-  "app-1914.svg",
-  "app-0132.svg",
-  "app-2310.svg",
-  "app-0528.svg",
-  "app-2904.svg",
-  "app-2310.svg",
-  "app-0528.svg",
-  "app-2904.svg",
-].map(asset);
-
 /* ---------- Mission ---------- */
 export const MISSION = {
   text: "We’re a small studio that works with founders around the world. From the first sketch to launch day, we treat every product like it’s our own and we sign our name on every one",
