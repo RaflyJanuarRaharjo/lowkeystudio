@@ -11,6 +11,8 @@ export type Project = {
   year: number;
   image: string;
   crop?: CSSProperties;
+  tagline: string;
+  summary: string;
 };
 export type Message = {
   side: "left" | "right";
@@ -95,11 +97,6 @@ export const SECTION_HEADERS = {
     title: "What we do",
     intro: "Small team, end to end. We take a few projects at a time and see each one through from first sketch to launch.",
   },
-  work: {
-    eyebrow: "Work",
-    title: "Selected projects",
-    intro: "A few things we've shipped recently — brands, sites and products for founders we love working with.",
-  },
   testimonials: {
     eyebrow: "Testimonials",
     title: "What clients say",
@@ -130,19 +127,38 @@ export const MISSION = {
 };
 
 /* ---------- Projects ---------- */
-export const FILTERS = [
-  { id: "all", label: "All" },
-  { id: "branding", label: "Branding" },
-  { id: "web", label: "Web" },
-  { id: "mobile", label: "Mobile" },
-  { id: "motion", label: "Motion" },
-];
-
 // `crop` mereplikasi crop gambar di Figma (posisi/ukuran dalam persen).
 export const PROJECTS: Project[] = [
-  { title: "Kala Living", tag: "WEB", category: "web", year: 2025, image: asset("project-kala-living.png") },
-  { title: "Aurora Rebrand", tag: "BRANDING", category: "branding", year: 2025, image: asset("project-aurora-rebrand.png") },
-  { title: "Fintra Dashboard", tag: "PRODUCT", category: "web", year: 2025, image: asset("project-fintra-dashboard.png") },
+  {
+    title: "Kala Living",
+    tag: "WEB",
+    category: "web",
+    year: 2025,
+    image: asset("project-kala-living.png"),
+    tagline: "A calmer way to shop for home",
+    summary:
+      "Kala Living sells handmade furniture from small workshops. We designed a site that feels like walking through a quiet showroom, with room for each piece to breathe.",
+  },
+  {
+    title: "Aurora Rebrand",
+    tag: "BRANDING",
+    category: "branding",
+    year: 2025,
+    image: asset("project-aurora-rebrand.png"),
+    tagline: "A brand with a pixel at its heart",
+    summary:
+      "Aurora had outgrown its first logo. We built a new identity around a single pixel mark that scales from packaging to app icons without losing its character.",
+  },
+  {
+    title: "Fintra Dashboard",
+    tag: "PRODUCT",
+    category: "web",
+    year: 2025,
+    image: asset("project-fintra-dashboard.png"),
+    tagline: "Money, made legible",
+    summary:
+      "Fintra helps funded startups manage their runway. We redesigned the dashboard so founders can see cash, burn and forecasts at a glance.",
+  },
   {
     title: "Ritme Music App",
     tag: "MOBILE",
@@ -150,6 +166,9 @@ export const PROJECTS: Project[] = [
     year: 2024,
     image: asset("project-ritme-music.png"),
     crop: { width: "200.9%", height: "111.84%", left: "-55.05%", top: "-8.53%" },
+    tagline: "Music that follows your pace",
+    summary:
+      "Ritme builds playlists around your daily rhythm. We designed a mobile app that stays out of the way while you move, with big, simple controls.",
   },
   {
     title: "Sora Skincare",
@@ -158,8 +177,20 @@ export const PROJECTS: Project[] = [
     year: 2024,
     image: asset("project-sora-skincare.png"),
     crop: { width: "172.07%", height: "193.31%", left: "-38.34%", top: "-25.14%" },
+    tagline: "Gentle care, clearly explained",
+    summary:
+      "Sora makes skincare for sensitive skin. We built an online store that explains every ingredient in plain language and makes routines easy to follow.",
   },
-  { title: "Nomad Coffee", tag: "PACKAGING", category: "branding", year: 2024, image: asset("project-nomad-coffee.png") },
+  {
+    title: "Nomad Coffee",
+    tag: "PACKAGING",
+    category: "branding",
+    year: 2024,
+    image: asset("project-nomad-coffee.png"),
+    tagline: "Coffee for the road",
+    summary:
+      "Nomad roasts small batches for travellers. We designed packaging that is easy to spot on a shelf and tells the story of each origin on the back.",
+  },
 ];
 
 /* ---------- Testimonials ---------- */
