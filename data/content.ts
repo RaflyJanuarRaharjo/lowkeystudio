@@ -105,6 +105,11 @@ export const SECTION_HEADERS = {
     title: "What clients say",
     intro: "Real messages from the founders we've worked with, straight from our chats.",
   },
+  faq: {
+    eyebrow: "FAQ",
+    title: "Questions, answered",
+    intro: "The things founders usually ask before we start working together.",
+  },
 };
 
 /* ---------- Hero ---------- */
@@ -201,3 +206,58 @@ export const MESSAGES: Message[] = [
     text: "obsessed. can we just use the orange for everything lol",
   },
 ];
+
+/* ---------- FAQ ---------- */
+export const FAQS = [
+  {
+    question: "How long does a project take?",
+    answer:
+      "Most branding projects take 3–4 weeks, websites 4–6 weeks and app design 6–10 weeks. We'll give you a clear timeline after our first call.",
+  },
+  {
+    question: "How much does it cost?",
+    answer:
+      "Every project is scoped individually. After the first call we send a fixed-price proposal, so you know the full cost before we start.",
+  },
+  {
+    question: "How many projects do you take at once?",
+    answer:
+      "Only 2–3 clients per month. Keeping it small means you work directly with the founders, not a rotating team.",
+  },
+  {
+    question: "Do you also build the website?",
+    answer:
+      "Yes. We design and develop sites in Next.js or Webflow, and hand everything over so you can update content yourself.",
+  },
+  {
+    question: "How many revisions are included?",
+    answer:
+      "Each phase includes two rounds of revisions. In practice we rarely need them all because we share progress early and often.",
+  },
+  {
+    question: "How do we get started?",
+    answer:
+      "Send us a message with a bit about what you're building. We'll set up a short call to see if we're the right fit.",
+  },
+];
+
+/* ---------- Footer ---------- */
+export const FOOTER = {
+  cta: "Have a project in mind?",
+  ctaSub: "Tell us what you're building. We usually reply within a day.",
+  email: "hello@lowkeystudio.com", // TODO: ganti dengan email asli
+  nav: [
+    { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Work", href: "#portfolio" },
+    { label: "Testimonials", href: "#testimonial" },
+    { label: "FAQ", href: "#faq" },
+  ],
+  socials: [
+    // TODO: ganti href dengan link akun asli
+    { label: "Instagram", href: "https://instagram.com/" },
+    { label: "Dribbble", href: "https://dribbble.com/" },
+    { label: "LinkedIn", href: "https://linkedin.com/" },
+  ],
+  copyright: "© 2026 Lowkey Studio. All rights reserved.",
+};

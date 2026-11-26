@@ -5,13 +5,20 @@ type Props = {
   eyebrow: string;
   title: string;
   intro: string;
+  /** "center" = semua di tengah, "split" = judul kiri & pengantar kanan */
+  align?: "center" | "split";
   className?: string;
 };
 
-/** Header section: label kecil + judul di kiri, kalimat pengantar di kanan. */
-export default function SectionHeader({ eyebrow, title, intro, className = "" }: Props) {
+export default function SectionHeader({
+  eyebrow,
+  title,
+  intro,
+  align = "center",
+  className = "",
+}: Props) {
   return (
-    <FadeIn className={`${styles.header} ${className}`}>
+    <FadeIn className={`${styles.header} ${styles[align]} ${className}`}>
       <div>
         <p className={styles.eyebrow}>{eyebrow}</p>
         <h2 className={styles.title}>{title}</h2>
