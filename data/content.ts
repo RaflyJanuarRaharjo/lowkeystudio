@@ -281,21 +281,52 @@ export const FAQS = [
 
 /* ---------- Footer ---------- */
 export const FOOTER = {
-  cta: "Have a project in mind?",
-  ctaSub: "Tell us what you're building. We usually reply within a day.",
   email: "hello@lowkeystudio.com", // TODO: ganti dengan email asli
-  nav: [
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Work", href: "#portfolio" },
-    { label: "Testimonials", href: "#testimonial" },
-    { label: "FAQ", href: "#faq" },
+  // Kolom link (gaya Baseten): label di atas, daftar link di bawahnya
+  columns: [
+    {
+      title: "Services",
+      links: [
+        { label: "Branding", href: "#services" },
+        { label: "Websites", href: "#services" },
+        { label: "Mobile Apps", href: "#services" },
+        { label: "Motion", href: "#services" },
+      ],
+    },
+    {
+      title: "Studio",
+      links: [
+        { label: "About", href: "#about" },
+        { label: "Work", href: "#portfolio" },
+        { label: "Testimonials", href: "#testimonial" },
+        { label: "FAQ", href: "#faq" },
+      ],
+    },
+    {
+      title: "Work",
+      links: [
+        { label: "Branding", href: "#portfolio" },
+        { label: "Websites", href: "#portfolio" },
+        { label: "Mobile Apps", href: "#portfolio" },
+        { label: "All projects", href: "#portfolio" },
+      ],
+    },
+    {
+      title: "Contact",
+      links: [
+        { label: "hello@lowkeystudio.com", href: "mailto:hello@lowkeystudio.com" },
+        { label: "Start a project", href: "mailto:hello@lowkeystudio.com" },
+      ],
+    },
   ],
+  status: "Available for new projects",
   socials: [
     // TODO: ganti href dengan link akun asli
     { label: "Instagram", href: "https://instagram.com/" },
     { label: "Dribbble", href: "https://dribbble.com/" },
     { label: "LinkedIn", href: "https://linkedin.com/" },
   ],
-  copyright: "© 2026 Lowkey Studio. All rights reserved.",
+  wordmark: "lowkey",
+  tagline: "Thoughtful design, built lowkey.",
+  copyright: "© 2026 Lowkey Studio",
 };
