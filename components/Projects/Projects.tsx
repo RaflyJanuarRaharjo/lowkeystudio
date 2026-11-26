@@ -3,16 +3,17 @@
 import { useEffect, useRef, useState } from "react";
 import { PROJECTS } from "@/data/content";
 import { FadeIn, PixelReveal } from "@/components/effects";
-import Pill from "@/components/ui/Pill";
 import ProjectCard from "./ProjectCard";
 import styles from "./Projects.module.css";
 
 /**
- * Portofolio ala koto.com:
- * - Kiri: teks menempel di layar (sticky) dan berganti mengikuti project yang sedang terlihat.
- * - Kanan: gambar project tersusun ke bawah dan di-scroll biasa.
+ * Portofolio — layout & interaksi mengikuti section "Our work" di koto.com:
+ * - Grid 16 kolom. Kiri: info menempel (sticky), mulai di 30% tinggi layar.
+ * - Kanan: gambar 16:9 tersusun ke bawah dan di-scroll biasa.
+ * - Nama, deskripsi & info project berganti dengan fade di tempat,
+ *   mengikuti gambar yang sedang di tengah layar.
  * - Hover gambar: label "View case" mengikuti kursor.
- * Di layar kecil berubah jadi daftar kartu biasa.
+ * - Ditutup kartu "[ View all projects ]".
  */
 
 export default function Projects() {
@@ -58,51 +59,58 @@ export default function Projects() {
     };
   }, []);
 
-  // Label "View case" mengikuti kursor di dalam gambar
+  // Label "View case" mengikuti kursor
   const onMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     e.currentTarget.style.setProperty("--x", `${e.clientX - rect.left}px`);
     e.currentTarget.style.setProperty("--y", `${e.clientY - rect.top}px`);
   };
 
-  const current = PROJECTS[active];
+  const state = (i: number) => (i === active ? styles.isActive : "");
 
   return (
     <div id="portfolio" className={styles.wrapper}>
       {/* ---------- Desktop ---------- */}
-      <section className={`container ${styles.layout}`} aria-label="Selected work">
-        {/* Kiri: menempel saat scroll */}
+      <section className={styles.grid} aria-label="Our work">
+        {/* Kiri: info menempel */}
         <aside className={styles.info}>
-          <div>
+          <div className={styles.titles}>
             <h2 className={styles.heading}>Our work</h2>
-            <div className={styles.nameMask}>
-              <ul
-                className={styles.nameList}
-                style={{ transform: `translateY(calc(-${active} * 1.15em))` }}
-              >
-                {PROJECTS.map((p) => (
-                  <li key={p.title}>{p.title}</li>
-                ))}
-              </ul>
+            <div className={styles.stack} aria-live="polite">
+              {PROJECTS.map((p, i) => (
+                <h3 key={p.title} className={`${styles.name} ${state(i)}`}>
+                  {p.title}
+                </h3>
+              ))}
             </div>
-
-            <p key={current.title} className={styles.summary}>
-              {current.summary}
-            </p>
           </div>
 
-          <div key={`${current.title}-chip`} className={styles.chip}>
-            <img src={current.image} alt="" className={styles.chipThumb} />
-            <div>
-              <p className={styles.chipTitle}>{current.tagline}</p>
-              <p className={styles.chipMeta}>
-                {current.year}, {current.tag}
-              </p>
+          <div className={styles.details}>
+            <div className={`${styles.stack} ${styles.stackBottom}`}>
+              {PROJECTS.map((p, i) => (
+                <p key={p.title} className={`${styles.summary} ${state(i)}`}>
+                  {p.summary}
+                </p>
+              ))}
+            </div>
+
+            <div className={styles.stack}>
+              {PROJECTS.map((p, i) => (
+                <div key={p.title} className={`${styles.chip} ${state(i)}`}>
+                  <img src={p.image} alt="" className={styles.chipThumb} />
+                  <div>
+                    <p className={styles.chipTitle}>{p.tagline}</p>
+                    <p className={styles.chipMeta}>
+                      {p.year}, {p.tag}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </aside>
 
-        {/* Kanan: gambar di-scroll biasa */}
+        {/* Kanan: gambar */}
         <div className={styles.media}>
           {PROJECTS.map((p, i) => (
             <a
@@ -125,26 +133,31 @@ export default function Projects() {
               </PixelReveal>
 
               <span className={styles.viewCase} aria-hidden="true">
-                <span>↗</span> View case
+                <span className={styles.viewCaseIcon}>↗</span>
+                View case
               </span>
             </a>
           ))}
+
+          {/* Kartu penutup */}
+          <a href="#portfolio" className={styles.viewAll}>
+            <span className={styles.viewAllText}>[ View all projects ]</span>
+          </a>
         </div>
       </section>
 
       {/* ---------- Mobile: daftar kartu ---------- */}
-      <section className={`container ${styles.mobileList}`} aria-label="Selected work">
+      <section className={`container ${styles.mobileList}`} aria-label="Our work">
         <h2 className={styles.heading}>Our work</h2>
         {PROJECTS.map((p, i) => (
           <FadeIn key={p.title} delay={(i % 2) * 120}>
             <ProjectCard {...p} />
           </FadeIn>
         ))}
+        <a href="#portfolio" className={styles.viewAll}>
+          <span className={styles.viewAllText}>[ View all projects ]</span>
+        </a>
       </section>
-
-      <FadeIn className={styles.viewAll}>
-        <Pill href="#portfolio">[ View all projects ]</Pill>
-      </FadeIn>
     </div>
   );
 }
