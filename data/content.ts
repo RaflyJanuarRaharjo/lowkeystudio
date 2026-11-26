@@ -23,7 +23,7 @@ export type Message = {
 
 const asset = (name: string) => `/assets/${name}`;
 
-export type TeamPhoto = { src: string; width: number; fit: "cover" | "fill"; position: string };
+export type TeamPhoto = { src: string; width: number; fit: "cover" | "contain"; position: string };
 
 export const ASSETS = {
   logo: asset("logo-mark.svg"),
@@ -37,9 +37,9 @@ export const ASSETS = {
   tailRight: asset("tail-right.svg"),
   arrow: asset("arrow.svg"),
   teamPhotos: [
-    // fit mengikuti Figma: foto 1 "cover", foto 2 ditampilkan utuh (tidak di-crop)
+    // fit mengikuti Figma: foto 1 "cover", foto 2 utuh tanpa distorsi, rata bawah
     { src: asset("team-1.png"), width: 273, fit: "cover", position: "center" },
-    { src: asset("team-2.png"), width: 326, fit: "fill", position: "center" },
+    { src: asset("team-2.png"), width: 326, fit: "contain", position: "bottom" },
   ] as TeamPhoto[],
 };
 

@@ -32,7 +32,10 @@ curl -sSL -o "%D%\tail-left.svg"                %P%/906e2.svg
 curl -sSL -o "%D%\tail-right.svg"               %P%/0d22e.svg
 curl -sSL -o "%D%\arrow.svg"                    %P%/dcfb3.svg
 
+curl -sSL -o "%D%\showcase-poster.png"          https://www.figma.com/api/mcp/asset/1cb3a630-588e-416f-a8ec-ba232ca7b77e.png
+
 echo.
 echo Selesai. Cek folder: %D%
+echo JANGAN LUPA: copy video asli kamu ke %D%\showcase.mp4
 dir /b "%D%"
 endlocal

@@ -1,10 +1,24 @@
 import styles from "./Showcase.module.css";
 
 /**
- * Placeholder untuk "Rectangle 62" (1440×921) di Figma.
- * Di frame-nya masih kosong — mockup HP & kartu "The first call / Proposal / Kickoff"
- * belum jadi bagian dari frame, jadi belum diimplementasikan.
+ * Video showcase ("Rectangle 62" di Figma, 1440×921).
+ * Taruh file video asli di: public/assets/showcase.mp4
+ * Poster (frame diam) diambil dari Figma: public/assets/showcase-poster.png
  */
 export default function Showcase() {
-  return <section className={styles.showcase} aria-hidden="true" />;
+  return (
+    <section className={styles.showcase}>
+      <video
+        className={styles.video}
+        src="/assets/showcase.mp4"
+        poster="/assets/showcase-poster.png"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-label="Lowkey Studio process showcase"
+      />
+    </section>
+  );
 }
