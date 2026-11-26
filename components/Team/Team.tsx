@@ -22,7 +22,7 @@ export default function Team() {
             alt="Lowkey Studio founder"
             width={photo.width}
             height={364}
-            style={{ width: photo.width, objectFit: "cover", objectPosition: photo.position }}
+            style={{ width: photo.width, objectFit: photo.fit, objectPosition: photo.position }}
             className={styles.photo}
           />
         ))}
