@@ -49,7 +49,7 @@ export const ASSETS = {
 export const NAV_LINKS: NavLink[] = [
   { label: "About", href: "#about" },
   { label: "Service", dropdown: "services" },
-  { label: "Portofolio", href: "#portfolio", chevron: true },
+  { label: "Portofolio", dropdown: "portfolio" },
   { label: "Testimonial", href: "#testimonial" },
 ];
 
@@ -128,6 +128,13 @@ export const MISSION = {
 
 /* ---------- Projects ---------- */
 // `crop` mereplikasi crop gambar di Figma (posisi/ukuran dalam persen).
+// Kategori portofolio (dipakai di dropdown navbar). `id` harus sama dengan `category` di PROJECTS.
+export const PORTFOLIO_CATEGORIES = [
+  { id: "branding", label: "Branding" },
+  { id: "web", label: "Websites" },
+  { id: "mobile", label: "Mobile Apps" },
+];
+
 export const PROJECTS: Project[] = [
   {
     title: "Kala Living",

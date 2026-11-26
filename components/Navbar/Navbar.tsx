@@ -1,9 +1,29 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ASSETS, NAV_LINKS } from "@/data/content";
-import ServicesDropdown from "./ServicesDropdown";
+import { ASSETS, NAV_LINKS, PORTFOLIO_CATEGORIES, PROJECTS, SERVICES } from "@/data/content";
+import NavDropdown, { type DropdownItem } from "./NavDropdown";
 import styles from "./Navbar.module.css";
+
+// Isi tiap dropdown navbar (key = nilai `dropdown` di NAV_LINKS)
+const DROPDOWNS: Record<string, DropdownItem[]> = {
+  services: SERVICES.map((s) => ({
+    title: s.title,
+    description: s.description,
+    image: s.image,
+    href: "#services",
+  })),
+  // Portofolio dikelompokkan per kategori (bukan per project)
+  portfolio: PORTFOLIO_CATEGORIES.map((c) => {
+    const projects = PROJECTS.filter((p) => p.category === c.id);
+    return {
+      title: c.label,
+      description: `${projects.length} ${projects.length === 1 ? "project" : "projects"}`,
+      image: projects[0]?.image ?? "",
+      href: "#portfolio",
+    };
+  }).filter((item) => item.image),
+};
 
 function Chevron({ open }: { open: boolean }) {
   return (
@@ -20,8 +40,20 @@ function Chevron({ open }: { open: boolean }) {
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
-  const [dropdownLeft, setDropdownLeft] = useState<number | null>(null);
   const headerRef = useRef<HTMLElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Dropdown menutup dengan jeda kecil, supaya kursor sempat pindah
+  // dari tombol Service ke dropdown yang ada di tengah layar
+  const cancelClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = null;
+  };
+  const scheduleClose = () => {
+    cancelClose();
+    closeTimer.current = setTimeout(() => setOpenMenu(null), 400);
+  };
+  useEffect(() => cancelClose, []);
   const navRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLAnchorElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
@@ -67,21 +99,12 @@ export default function Navbar() {
     };
   }, [openMenu]);
 
-  // Posisikan dropdown di bawah tombol, tapi tidak keluar layar
-  const placeDropdown = (button: HTMLElement) => {
-    const rect = button.getBoundingClientRect();
-    const half = 386; // setengah lebar dropdown (772px)
-    const center = rect.left + rect.width / 2;
-    const min = half + 16;
-    const max = window.innerWidth - half - 16;
-    setDropdownLeft(Math.min(Math.max(center, min), Math.max(min, max)));
-  };
-
   return (
     <header
       ref={headerRef}
       className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}
-      onMouseLeave={() => setOpenMenu(null)}
+      onMouseLeave={scheduleClose}
+      onMouseEnter={cancelClose}
     >
       <nav ref={navRef} className={styles.nav} aria-label="Main">
         <a ref={logoRef} href="#" className={styles.logo} aria-label="Lowkey Studio home">
@@ -101,14 +124,8 @@ export default function Navbar() {
                       className={`${styles.link} ${isOpen ? styles.linkActive : ""}`}
                       aria-expanded={isOpen}
                       aria-controls={`menu-${menu}`}
-                      onClick={(e) => {
-                        placeDropdown(e.currentTarget);
-                        setOpenMenu(isOpen ? null : menu);
-                      }}
-                      onMouseEnter={(e) => {
-                        placeDropdown(e.currentTarget);
-                        setOpenMenu(menu);
-                      }}
+                      onClick={() => setOpenMenu(isOpen ? null : menu)}
+                      onMouseEnter={() => setOpenMenu(menu)}
                     >
                       {link.label}
                       <Chevron open={isOpen} />
@@ -134,11 +151,9 @@ export default function Navbar() {
         </div>
       </nav>
 
-      <ServicesDropdown
-        id="menu-services"
-        open={openMenu === "services"}
-        left={dropdownLeft}
-      />
+      {Object.entries(DROPDOWNS).map(([key, items]) => (
+        <NavDropdown key={key} id={`menu-${key}`} open={openMenu === key} items={items} />
+      ))}
     </header>
   );
 }
