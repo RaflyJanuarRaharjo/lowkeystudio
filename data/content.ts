@@ -127,8 +127,9 @@ export const HERO = {
 export const MISSION = {
   text: "We’re a small studio that works with founders around the world. From the first sketch to launch day, we treat every product like it’s our own and we sign our name on every one",
   founders: [
-    { name: "Nareswari Maia H", role: "Co Founder Lowkey Studio" },
-    { name: "Rafly Januar R", role: "Founder Lowkey Studio" },
+    { name: "Nareswari Maia H", role: "Co Founder Lowkey Studio" } as { name: string; role: string; signature?: string },
+    // `signature` = file tanda tangan landscape (tanpa rotasi). Kosong = pakai ASSETS.signature (Figma, diputar)
+    { name: "Rafly Januar R", role: "Founder Lowkey Studio", signature: asset("signature-rafly.png") },
   ],
   reviewLabel: "5 Star Reviews",
 };

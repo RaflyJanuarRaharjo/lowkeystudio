@@ -78,7 +78,7 @@
 }
 
 /* File signature aslinya portrait (140×248), diputar -90° seperti di Figma */
-.signature img {
+.signatureRotated {
   width: calc(140 * var(--u));
   height: calc(248 * var(--u));
   max-width: none;
@@ -144,6 +144,13 @@
 .rating img {
   width: calc(176 * var(--u));
   height: auto;
+}
+
+/* Tanda tangan landscape: muat di kotak yang sama, tanpa rotasi */
+.signatureFlat {
+  width: 100%;
+  height: 70%; /* ubah angka ini untuk besar-kecil tanda tangan */
+  object-fit: contain;
 }
 
 @media (max-width: 900px) {
