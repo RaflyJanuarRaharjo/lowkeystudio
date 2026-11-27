@@ -6,6 +6,20 @@ import useInView from "@/hooks/useInView";
 import Avatar from "./Avatar";
 import styles from "./Testimonials.module.css";
 
+// Pisahkan emoji dari teks supaya bisa diberi font emoji Apple (iOS)
+const EMOJI = /(\p{Extended_Pictographic}(?:\uFE0F|\u200D\p{Extended_Pictographic})*)/gu;
+function withEmoji(text: string) {
+  return text.split(EMOJI).map((part, i) =>
+    i % 2 === 1 ? (
+      <span key={i} className={styles.emoji}>
+        {part}
+      </span>
+    ) : (
+      part
+    )
+  );
+}
+
 const TYPING_DURATION = 900; // ms
 const STAGGER = 600; // jeda antar pesan
 
@@ -57,11 +71,11 @@ export default function ChatMessage({ item, person, side, index = 0 }: Props) {
             <span className={styles.stars}>★★★★★</span>
             <span className={styles.reviewLabel}>Review</span>
           </p>
-          <p className={styles.text}>{item.text}</p>
+          <p className={styles.text}>{withEmoji(item.text)}</p>
         </div>
       );
     }
-    return <p className={styles.text}>{item.text}</p>;
+    return <p className={styles.text}>{withEmoji(item.text)}</p>;
   };
 
   return (

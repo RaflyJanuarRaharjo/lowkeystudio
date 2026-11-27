@@ -226,6 +226,12 @@
   line-height: 1.32;
 }
 
+/* Emoji gaya iOS: pakai font Apple Color Emoji kalau ada (iPhone/Mac) */
+.emoji {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  font-style: normal;
+}
+
 .tail {
   position: absolute;
   bottom: 0;
