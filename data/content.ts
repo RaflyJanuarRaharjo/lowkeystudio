@@ -97,12 +97,12 @@ export const SECTION_HEADERS = {
   about: {
     eyebrow: "About",
     title: "Who we are",
-    intro: "Two founders, one small studio. We keep the team tight so every project gets our full attention.",
+    intro: "Two founders, one small studio. We keep the team\ntight so every project gets our full attention.",
   },
   services: {
     eyebrow: "Services",
     title: "What we do",
-    intro: "Small team, end to end. We take a few projects at a time and see each one through from first sketch to launch.",
+    intro: "Small team, end to end. We take a few projects at a time\nand see each one through from first sketch to launch.",
   },
   testimonials: {
     eyebrow: "Straight from the DMs",
@@ -112,7 +112,7 @@ export const SECTION_HEADERS = {
   faq: {
     eyebrow: "FAQ",
     title: "Questions, answered",
-    intro: "The things founders usually ask before we start working together.",
+    intro: "The things founders usually ask before we start\nworking together.",
   },
 };
 

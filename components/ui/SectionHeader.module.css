@@ -19,6 +19,12 @@
   text-align: center;
 }
 
+/* Di tengah: baris mengikuti teks ("\n" di content.ts = pindah baris) */
+.center .intro {
+  max-width: none;
+  white-space: pre-line;
+}
+
 .center .eyebrow {
   justify-content: center;
 }
@@ -66,5 +72,10 @@
   }
   .intro {
     font-size: 16px;
+  }
+  /* Di HP teks dibiarkan mengalir biasa */
+  .center .intro {
+    max-width: 420px;
+    white-space: normal;
   }
 }
