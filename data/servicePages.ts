@@ -4,6 +4,8 @@
  * Semua teks masih draft — sesuaikan dengan cara kerja Lowkey yang sebenarnya.
  */
 
+import type { ArtKind } from "@/components/ServiceDetail/ProcessArt";
+
 export type ServicePage = {
   /** Paragraf pembuka (berubah putih saat di-scroll) */
   overview: string;
@@ -13,7 +15,8 @@ export type ServicePage = {
   /** Apa saja yang bisa dikerjakan */
   capabilities: { title: string; text: string }[];
   /** Tahapan kerja */
-  process: { title: string; text: string; duration: string }[];
+  /** `art` (opsional): "discover" | "sketch" | "build" | "launch" — default ikut urutan */
+  process: { title: string; text: string; duration: string; art?: ArtKind }[];
   /** Yang diterima klien di akhir project */
   deliverables: string[];
   /** Kategori PROJECTS untuk "Related work" (kosong = tidak tampil) */

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { PROJECTS, SERVICES } from "@/data/content";
 import type { ServicePage } from "@/data/servicePages";
 import { FadeIn, Parallax, PixelReveal, ScrambleText, ScrollRevealText } from "@/components/effects";
+import ProcessArt, { type ArtKind } from "./ProcessArt";
 import ReadingProgress from "@/components/CaseStudy/ReadingProgress";
 // Pakai gaya dasar yang sama dengan halaman study case supaya konsisten
 import cs from "@/components/CaseStudy/CaseStudy.module.css";
@@ -15,6 +16,9 @@ type Props = {
   page: ServicePage;
   next: Service;
 };
+
+// Ilustrasi default per urutan tahap (bisa diganti lewat `art` di servicePages.ts)
+const DEFAULT_ART: ArtKind[] = ["discover", "sketch", "build", "launch"];
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
@@ -100,6 +104,7 @@ export default function ServiceDetail({ service, index, page, next }: Props) {
         <ol className={styles.process}>
           {page.process.map((step, i) => (
             <FadeIn as="li" key={step.title} delay={i * 120} className={styles.step}>
+              <ProcessArt kind={step.art ?? DEFAULT_ART[i % DEFAULT_ART.length]} />
               <div className={styles.stepHead}>
                 <span className={cs.stepNum}>{pad(i + 1)}</span>
                 <span className={styles.duration}>{step.duration}</span>

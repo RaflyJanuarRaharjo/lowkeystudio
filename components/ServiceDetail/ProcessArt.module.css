@@ -1,0 +1,268 @@
+.art {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  margin-bottom: 24px;
+  overflow: hidden;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+}
+
+.art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Semua animasi diam sampai kotak terlihat di layar */
+.art * {
+  animation-play-state: paused !important;
+}
+
+.running * {
+  animation-play-state: running !important;
+}
+
+/* ---------- Gaya garis dasar ---------- */
+.grid polyline {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.05);
+  stroke-width: 1;
+}
+
+.faceTop,
+.faceLeft,
+.faceRight {
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+
+.faceTop {
+  fill: #141414;
+}
+
+.faceRight {
+  fill: #0b0b0b;
+}
+
+.stroke,
+.detail,
+.handle,
+.wave {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.stroke {
+  stroke: #fff;
+  stroke-width: 1.4;
+}
+
+.detail {
+  stroke: rgba(255, 255, 255, 0.45);
+  stroke-width: 1.2;
+}
+
+.handle {
+  stroke: #fff;
+  stroke-width: 4;
+}
+
+.wave {
+  stroke: #fff;
+  stroke-width: 1.4;
+  opacity: 0.15;
+  animation: wave 1.8s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+/* ---------- Discover ---------- */
+.lensGlass {
+  fill: rgba(255, 255, 255, 0.06);
+}
+
+.magnifier {
+  animation: scanDocs 6s ease-in-out infinite;
+}
+
+@keyframes scanDocs {
+  0%,
+  100% {
+    transform: translate(110px, 70px);
+  }
+  33% {
+    transform: translate(170px, 92px);
+  }
+  66% {
+    transform: translate(140px, 118px);
+  }
+}
+
+.arrowIn {
+  animation: nudgeIn 1.8s ease-in-out infinite;
+}
+
+@keyframes nudgeIn {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-6px, 4px);
+  }
+}
+
+/* ---------- Sketch ---------- */
+.wire {
+  fill: rgba(255, 255, 255, 0);
+  stroke: #fff;
+  stroke-width: 1.2;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw 5s ease-in-out infinite;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 100;
+    fill: rgba(255, 255, 255, 0);
+    opacity: 1;
+  }
+  35% {
+    stroke-dashoffset: 0;
+    fill: rgba(255, 255, 255, 0);
+  }
+  55%,
+  85% {
+    stroke-dashoffset: 0;
+    fill: rgba(255, 255, 255, 0.07);
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+.float {
+  animation: bob 3.2s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.arrowNudge {
+  animation: nudgeDown 1.8s ease-in-out infinite;
+}
+
+@keyframes nudgeDown {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-5px, 5px);
+  }
+}
+
+/* ---------- Build ---------- */
+.cube {
+  opacity: 0;
+  animation: drop 5.4s cubic-bezier(0.3, 0, 0.2, 1) infinite;
+}
+
+@keyframes drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  12% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90%,
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Launch ---------- */
+.shadow {
+  fill: rgba(255, 255, 255, 0.04);
+  stroke: rgba(255, 255, 255, 0.15);
+  stroke-dasharray: 3 4;
+}
+
+.lid {
+  animation: lid 3s ease-in-out infinite;
+}
+
+@keyframes lid {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.arrowFill {
+  fill: #fff;
+}
+
+.rise {
+  animation: rise 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes rise {
+  0% {
+    opacity: 1;
+    transform: translateY(24px);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .art * {
+    animation: none !important;
+  }
+
+  .cube,
+  .wave {
+    opacity: 1;
+  }
+
+  .wire {
+    stroke-dashoffset: 0;
+  }
+}

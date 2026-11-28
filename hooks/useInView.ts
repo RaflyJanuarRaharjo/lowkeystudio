@@ -2,8 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 
-/** Mengembalikan [ref, inView]. Sekali terlihat, tetap true. */
-export default function useInView<T extends Element = HTMLDivElement>(threshold = 0.4) {
+/**
+ * Mengembalikan [ref, inView].
+ * once = true (default): sekali terlihat, tetap true.
+ * once = false: ikut berubah saat elemen keluar-masuk layar (mis. untuk pause animasi).
+ */
+export default function useInView<T extends Element = HTMLDivElement>(threshold = 0.4, once = true) {
   const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);
 
@@ -15,7 +19,9 @@ export default function useInView<T extends Element = HTMLDivElement>(threshold 
       ([entry]) => {
         if (entry.isIntersecting) {
           setInView(true);
-          observer.disconnect();
+          if (once) observer.disconnect();
+        } else if (!once) {
+          setInView(false);
         }
       },
       { threshold }
@@ -23,7 +29,7 @@ export default function useInView<T extends Element = HTMLDivElement>(threshold 
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, [threshold]);
+  }, [threshold, once]);
 
   return [ref, inView] as const;
 }
