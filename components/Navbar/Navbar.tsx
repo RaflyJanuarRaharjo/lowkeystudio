@@ -26,7 +26,7 @@ const DROPDOWNS: Record<string, DropdownItem[]> = {
       title: c.label,
       description: `${projects.length} ${projects.length === 1 ? "project" : "projects"}`,
       image: projects[0]?.image ?? "",
-      href: "/#portfolio",
+      href: `/work?category=${c.id}`,
     };
   }).filter((item) => item.image),
 };

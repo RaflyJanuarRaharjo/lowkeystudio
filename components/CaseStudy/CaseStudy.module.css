@@ -7,6 +7,7 @@
 /* Reset margin/padding bawaan browser */
 .page dd,
 .page figure,
+.page blockquote,
 .page ol,
 .page ul {
   margin: 0;
@@ -293,9 +294,254 @@
   background: var(--color-text-faint);
 }
 
+/* ---------- Reading progress ---------- */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  width: 100%;
+  height: 2px;
+  background: var(--color-text);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+/* ---------- Goals ---------- */
+.goals {
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+}
+
+.goal {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-family: var(--font-geist);
+  font-size: 28px;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+.goalNum {
+  flex-shrink: 0;
+  width: 32px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0;
+  color: var(--color-text-faint);
+}
+
+/* ---------- Solution ---------- */
+.solution {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+}
+
+.feature {
+  padding: 40px;
+  background: var(--color-bg);
+  transition: background 0.4s var(--ease);
+}
+
+.feature:hover {
+  background: var(--color-card);
+}
+
+/* Ikon kotak pixel kecil (3 kotak) */
+.featureIcon {
+  display: block;
+  width: 8px;
+  height: 8px;
+  margin-bottom: 56px;
+  background: var(--color-text);
+  box-shadow:
+    10px 0 0 var(--color-text-faint),
+    0 10px 0 var(--color-text-faint);
+  transition: box-shadow 0.4s var(--ease);
+}
+
+.feature:hover .featureIcon {
+  box-shadow:
+    10px 0 0 var(--color-text),
+    0 10px 0 var(--color-text),
+    10px 10px 0 var(--color-text-faint);
+}
+
+.featureTitle {
+  margin-bottom: 12px;
+  font-family: var(--font-geist);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+
+.featureText {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Visual system ---------- */
+.visual {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+.palette {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.swatchColor {
+  display: block;
+  aspect-ratio: 3 / 4;
+  margin-bottom: 12px;
+  border: 1px solid var(--color-border);
+}
+
+.swatchName {
+  font-size: 16px;
+}
+
+.swatchHex {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: var(--color-text-faint);
+}
+
+.type {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 32px;
+  border: 1px solid var(--color-border);
+}
+
+.typeSample {
+  font-family: var(--font-geist);
+  font-weight: 500;
+  font-size: 120px;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.typeName {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.typeNote {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Quote ---------- */
+.quote {
+  max-width: 920px;
+}
+
+.quoteText {
+  font-family: var(--font-geist);
+  font-size: 36px;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+}
+
+.quoteBy {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 40px;
+}
+
+.quoteAvatar {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.quoteName,
+.quoteRole {
+  display: block;
+}
+
+.quoteName {
+  font-size: 16px;
+}
+
+.quoteRole {
+  font-size: 14px;
+  color: var(--color-text-subtle);
+}
+
+/* ---------- CTA ---------- */
+.ctaWrap {
+  margin-top: var(--row-gap);
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 56px;
+  background: var(--color-card);
+}
+
+.ctaTitle {
+  font-family: var(--font-geist);
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.ctaButton {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 28px;
+  background: var(--color-text);
+  color: #000;
+  font-family: var(--font-jakarta);
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.ctaButton span {
+  transition: transform 0.3s var(--ease);
+}
+
+.ctaButton:hover span {
+  transform: translate(3px, -3px);
+}
+
 /* ---------- Next project ---------- */
 .nextWrap {
-  margin-top: 200px;
+  margin-top: 120px;
 }
 
 .next {
@@ -444,7 +690,51 @@
   }
 
   .nextWrap {
-    margin-top: 120px;
+    margin-top: 80px;
+  }
+
+  .goal {
+    gap: 16px;
+    font-size: 20px;
+  }
+
+  .solution,
+  .visual {
+    grid-template-columns: 1fr;
+  }
+
+  .feature {
+    padding: 28px 24px;
+  }
+
+  .featureIcon {
+    margin-bottom: 32px;
+  }
+
+  .palette {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .swatchColor {
+    aspect-ratio: 16 / 9;
+  }
+
+  .typeSample {
+    font-size: 80px;
+  }
+
+  .quoteText {
+    font-size: 24px;
+  }
+
+  .cta {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 24px;
+  }
+
+  .ctaTitle {
+    font-size: 28px;
   }
 
   .next {

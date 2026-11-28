@@ -30,7 +30,7 @@ export type ChatItem =
   | { from: string; kind: "review"; text: string };
 export type Conversation = { client: string; project: string; messages: ChatItem[] };
 
-const asset = (name: string) => `/assets/${name}`;
+export const asset = (name: string) => `/assets/${name}`;
 
 export type TeamPhoto = { src: string; alt: string; width: number; height: number };
 
@@ -320,7 +320,7 @@ export const FOOTER = {
       title: "Studio",
       links: [
         { label: "About", href: "/#about" },
-        { label: "Work", href: "/#portfolio" },
+        { label: "Work", href: "/work" },
         { label: "Testimonials", href: "/#testimonial" },
         { label: "FAQ", href: "/#faq" },
       ],
@@ -328,10 +328,10 @@ export const FOOTER = {
     {
       title: "Work",
       links: [
-        { label: "Branding", href: "/#portfolio" },
-        { label: "Websites", href: "/#portfolio" },
-        { label: "Mobile Apps", href: "/#portfolio" },
-        { label: "All projects", href: "/#portfolio" },
+        { label: "Branding", href: "/work?category=branding" },
+        { label: "Websites", href: "/work?category=web" },
+        { label: "Mobile Apps", href: "/work?category=mobile" },
+        { label: "All projects", href: "/work" },
       ],
     },
     {

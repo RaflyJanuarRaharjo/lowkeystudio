@@ -141,9 +141,9 @@ export default function Projects() {
           ))}
 
           {/* Kartu penutup */}
-          <a href="#portfolio" className={styles.viewAll}>
+          <Link href="/work" className={styles.viewAll}>
             <span className={styles.viewAllText}>[ View all projects ]</span>
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -157,9 +157,9 @@ export default function Projects() {
             </Link>
           </FadeIn>
         ))}
-        <a href="#portfolio" className={styles.viewAll}>
+        <Link href="/work" className={styles.viewAll}>
           <span className={styles.viewAllText}>[ View all projects ]</span>
-        </a>
+        </Link>
       </section>
     </div>
   );
