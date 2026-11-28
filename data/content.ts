@@ -65,6 +65,8 @@ export const NAV_LINKS: NavLink[] = [
 // Dipakai di dropdown navbar (title + description) dan section Services (semua field)
 export const SERVICES = [
   {
+    /** URL halaman detail: /services/<slug> */
+    slug: "branding",
     title: "Branding",
     description: "Identity & logo systems",
     summary: "A clear, ownable identity that feels established from day one.",
@@ -72,6 +74,8 @@ export const SERVICES = [
     tags: ["Logo & wordmark", "Visual identity", "Brand guidelines"],
   },
   {
+    /** URL halaman detail: /services/<slug> */
+    slug: "websites",
     title: "Websites",
     description: "Sites & landing pages",
     summary: "Fast, considered sites that explain what you do and turn visits into calls.",
@@ -79,6 +83,8 @@ export const SERVICES = [
     tags: ["Landing pages", "Company sites", "Webflow / Next.js"],
   },
   {
+    /** URL halaman detail: /services/<slug> */
+    slug: "mobile-apps",
     title: "Mobile Apps",
     description: "Calm, clear product UI",
     summary: "Product design that stays out of the way and lets people get things done.",
@@ -86,6 +92,8 @@ export const SERVICES = [
     tags: ["UX flows", "UI design", "Design systems"],
   },
   {
+    /** URL halaman detail: /services/<slug> */
+    slug: "motion",
     title: "Motion",
     description: "Brand & interface animation",
     summary: "Movement that gives your brand and product a bit of personality.",
@@ -310,10 +318,10 @@ export const FOOTER = {
     {
       title: "Services",
       links: [
-        { label: "Branding", href: "/#services" },
-        { label: "Websites", href: "/#services" },
-        { label: "Mobile Apps", href: "/#services" },
-        { label: "Motion", href: "/#services" },
+        { label: "Branding", href: "/services/branding" },
+        { label: "Websites", href: "/services/websites" },
+        { label: "Mobile Apps", href: "/services/mobile-apps" },
+        { label: "Motion", href: "/services/motion" },
       ],
     },
     {

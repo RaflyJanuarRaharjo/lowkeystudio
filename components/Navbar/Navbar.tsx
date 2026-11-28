@@ -17,7 +17,7 @@ const DROPDOWNS: Record<string, DropdownItem[]> = {
     title: s.title,
     description: s.description,
     image: s.image,
-    href: "/#services",
+    href: `/services/${s.slug}`,
   })),
   // Portofolio dikelompokkan per kategori (bukan per project)
   portfolio: PORTFOLIO_CATEGORIES.map((c) => {

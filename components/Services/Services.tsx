@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { SECTION_HEADERS, SERVICES } from "@/data/content";
 import { FadeIn } from "@/components/effects";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -66,7 +67,12 @@ export default function Services() {
               active !== null && active !== i ? styles.itemDim : ""
             }`}
           >
-            <div className={styles.row} onMouseEnter={() => setActive(i)}>
+            <Link
+              href={`/services/${service.slug}`}
+              className={styles.row}
+              onMouseEnter={() => setActive(i)}
+              onFocus={() => setActive(i)}
+            >
               <span className={styles.number}>{String(i + 1).padStart(2, "0")}</span>
 
               <div className={styles.body}>
@@ -79,11 +85,7 @@ export default function Services() {
                   <li key={tag}>{tag}</li>
                 ))}
               </ul>
-
-              <span className={styles.arrow} aria-hidden="true">
-                →
-              </span>
-            </div>
+            </Link>
           </FadeIn>
         ))}
 

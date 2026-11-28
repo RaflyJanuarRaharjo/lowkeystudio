@@ -1,0 +1,227 @@
+/* Gaya dasar diambil dari CaseStudy.module.css — file ini hanya tambahan khusus halaman service */
+
+.meta {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cover {
+  aspect-ratio: 21 / 9;
+}
+
+/* ---------- What we do: 3 kolom ---------- */
+.capabilities {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+}
+
+.capNum {
+  display: block;
+  margin-bottom: 48px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-faint);
+  transition: color 0.3s ease;
+}
+
+.capabilities > *:hover .capNum {
+  color: var(--color-text);
+}
+
+/* ---------- Proses: 4 tahap ---------- */
+.process {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stepHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.duration {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: var(--color-text-dim);
+}
+
+/* Garis dengan kotak pixel di ujung kiri */
+.stepLine {
+  position: relative;
+  display: block;
+  height: 1px;
+  margin-top: 16px;
+  background: var(--color-border-strong);
+}
+
+.stepLine::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  background: var(--color-text);
+}
+
+.step h3 {
+  margin-top: 32px;
+}
+
+/* ---------- Deliverables: 2 kolom ---------- */
+.deliverables {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 40px;
+}
+
+/* ---------- Related work ---------- */
+.related {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card {
+  display: block;
+}
+
+.cardMedia {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 16px;
+  background: var(--color-card);
+}
+
+.cardMedia img {
+  transition: transform 0.9s var(--ease);
+}
+
+.card:hover .cardMedia img {
+  transform: scale(1.04);
+}
+
+.cardTitle {
+  font-family: var(--font-geist);
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+}
+
+.cardMeta {
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+
+/* ---------- FAQ ---------- */
+.faqs {
+  border-top: 1px solid var(--color-border);
+}
+
+.faq {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faqQ {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 0;
+  font-family: var(--font-geist);
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faqQ::-webkit-details-marker {
+  display: none;
+}
+
+/* Ikon + yang berubah jadi − */
+.faqIcon {
+  position: relative;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+}
+
+.faqIcon::before,
+.faqIcon::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 14px;
+  height: 2px;
+  background: var(--color-text-muted);
+  transition: transform 0.3s ease;
+}
+
+.faqIcon::after {
+  transform: rotate(90deg);
+}
+
+.faq[open] .faqIcon::after {
+  transform: rotate(0deg);
+}
+
+.faqA {
+  max-width: 640px;
+  padding-bottom: 24px;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .capabilities {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .process {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 48px;
+  }
+}
+
+@media (max-width: 900px) {
+  .meta {
+    grid-template-columns: 1fr;
+  }
+
+  .cover {
+    aspect-ratio: 4 / 3;
+  }
+
+  .capabilities,
+  .process,
+  .deliverables,
+  .related {
+    grid-template-columns: 1fr;
+  }
+
+  .capNum {
+    margin-bottom: 24px;
+  }
+
+  .faqQ {
+    font-size: 18px;
+  }
+}

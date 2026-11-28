@@ -41,7 +41,7 @@
 .row {
   position: relative;
   display: grid;
-  grid-template-columns: 80px minmax(0, 1fr) 240px 32px;
+  grid-template-columns: 80px minmax(0, 1fr) 240px;
   align-items: center;
   gap: 24px;
   padding: 36px 16px;
@@ -98,21 +98,6 @@
   font-size: 12px;
   letter-spacing: 0.48px;
   color: var(--color-text-faint);
-}
-
-.arrow {
-  justify-self: end;
-  font-size: 20px;
-  color: var(--color-text-dim);
-  transform: rotate(-45deg);
-  transition:
-    transform 0.5s cubic-bezier(0.65, 0, 0.35, 1),
-    color 0.3s ease;
-}
-
-.itemActive .arrow {
-  color: var(--color-text);
-  transform: rotate(0deg);
 }
 
 /* ---------- Preview yang mengikuti kursor ---------- */
@@ -182,9 +167,6 @@
   .tags {
     grid-column: 2;
   }
-  .arrow {
-    display: none;
-  }
   .name {
     font-size: 24px;
   }
@@ -193,7 +175,6 @@
 @media (prefers-reduced-motion: reduce) {
   .item::before,
   .name,
-  .arrow,
   .previewImg {
     transition: none;
   }
