@@ -38,19 +38,24 @@ export default function CaseStudy({ project, study, next }: Props) {
 
       {/* ---------- Hero ---------- */}
       <header className={`container ${styles.hero}`}>
-        <FadeIn>
-          <Link href="/work" className={styles.back}>
-            <span aria-hidden="true">←</span> All work
-          </Link>
-        </FadeIn>
+        {/* Kiri: tombol kembali, kanan: judul project */}
+        <div className={styles.heroTop}>
+          <FadeIn>
+            <Link href="/work" className={styles.back}>
+              All work
+            </Link>
+          </FadeIn>
 
-        <p className={styles.eyebrow}>
-          {project.tag} · {project.year}
-        </p>
-        <ScrambleText as="h1" text={project.title} className={styles.title} />
-        <FadeIn delay={200}>
-          <p className={styles.tagline}>{project.tagline}</p>
-        </FadeIn>
+          <div>
+            <p className={styles.eyebrow}>
+              {project.tag} · {project.year}
+            </p>
+            <ScrambleText as="h1" text={project.title} className={styles.title} />
+            <FadeIn delay={200}>
+              <p className={styles.tagline}>{project.tagline}</p>
+            </FadeIn>
+          </div>
+        </div>
 
         <FadeIn delay={350}>
           <dl className={styles.meta}>

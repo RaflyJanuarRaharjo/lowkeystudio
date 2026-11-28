@@ -20,30 +20,35 @@
   padding-bottom: 80px;
 }
 
+/* Kolom sama dengan baris konten di bawah: kiri tombol, kanan judul */
+.heroTop {
+  display: grid;
+  grid-template-columns: var(--label-col) 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Tombol kembali: kotak, tanpa panah */
 .back {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 64px;
+  display: inline-block;
+  padding: 12px 18px;
+  border: 1px solid var(--color-border-strong);
   font-family: var(--font-mono);
   font-weight: 500;
   font-size: 12px;
   letter-spacing: 0.96px;
   text-transform: uppercase;
-  color: var(--color-text-dim);
-  transition: color 0.2s ease;
-}
-
-.back span {
-  transition: transform 0.3s var(--ease);
+  color: var(--color-text-muted);
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .back:hover {
-  color: var(--color-text);
-}
-
-.back:hover span {
-  transform: translateX(-4px);
+  background: var(--color-text);
+  border-color: var(--color-text);
+  color: #000;
 }
 
 .eyebrow,
@@ -618,8 +623,9 @@
     padding-bottom: 48px;
   }
 
-  .back {
-    margin-bottom: 40px;
+  .heroTop {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
   .tagline {

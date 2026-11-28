@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { PORTFOLIO_CATEGORIES, PROJECTS } from "@/data/content";
-import { FadeIn, PixelReveal, ScrambleText } from "@/components/effects";
+import { FadeIn, PixelReveal } from "@/components/effects";
 import styles from "./WorkIndex.module.css";
 
 const ALL = "all";
@@ -46,42 +46,34 @@ export default function WorkIndex() {
   return (
     <div className={`container ${styles.page}`}>
       {/* ---------- Header ---------- */}
+      {/* Kiri: tombol kembali, kanan: filter kategori */}
       <header className={styles.header}>
+        <h1 className={styles.srOnly}>All projects</h1>
+
         <FadeIn>
           <Link href="/#portfolio" className={styles.back}>
-            <span aria-hidden="true">←</span> Back to home
+            Back to home
           </Link>
         </FadeIn>
-        <p className={styles.eyebrow}>Selected work</p>
-        <div className={styles.titleRow}>
-          <ScrambleText as="h1" text="All projects" className={styles.title} />
-          <sup className={styles.total}>({pad(PROJECTS.length)})</sup>
-        </div>
-        <FadeIn delay={200}>
-          <p className={styles.intro}>
-            Brands, websites and apps we&apos;ve designed and built with founders around the world.
-          </p>
+
+        <FadeIn delay={150}>
+          <div className={styles.filters} role="tablist" aria-label="Filter projects">
+            {FILTERS.map((f) => (
+              <button
+                key={f.id}
+                type="button"
+                role="tab"
+                aria-selected={filter === f.id}
+                className={`${styles.filter} ${filter === f.id ? styles.filterActive : ""}`}
+                onClick={() => choose(f.id)}
+              >
+                {f.label}
+                <span className={styles.filterCount}>{pad(countOf(f.id))}</span>
+              </button>
+            ))}
+          </div>
         </FadeIn>
       </header>
-
-      {/* ---------- Filter ---------- */}
-      <FadeIn delay={300}>
-        <div className={styles.filters} role="tablist" aria-label="Filter projects">
-          {FILTERS.map((f) => (
-            <button
-              key={f.id}
-              type="button"
-              role="tab"
-              aria-selected={filter === f.id}
-              className={`${styles.filter} ${filter === f.id ? styles.filterActive : ""}`}
-              onClick={() => choose(f.id)}
-            >
-              {f.label}
-              <span className={styles.filterCount}>{pad(countOf(f.id))}</span>
-            </button>
-          ))}
-        </div>
-      </FadeIn>
 
       {/* ---------- Grid ---------- */}
       {/* key={filter} → grid dirender ulang supaya animasi muncul diputar lagi */}
