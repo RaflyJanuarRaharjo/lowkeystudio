@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ASSETS, CONVERSATIONS, PEOPLE, SECTION_HEADERS } from "@/data/content";
+import { CONVERSATIONS, PEOPLE, SECTION_HEADERS } from "@/data/content";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Avatar from "./Avatar";
 import ChatMessage from "./ChatMessage";
@@ -9,7 +9,7 @@ import styles from "./Testimonials.module.css";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-/** Testimoni bergaya chat. Tombol panah (atau ← → di keyboard) berganti percakapan. */
+/** Testimoni bergaya chat. Tombol Prev/Next (atau tombol kiri/kanan di keyboard) berganti percakapan. */
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
@@ -60,19 +60,19 @@ export default function Testimonials() {
             </span>
             <button
               type="button"
-              className={`${styles.arrowBtn} ${styles.prev}`}
+              className={styles.navBtn}
               aria-label="Previous testimonial"
               onClick={() => go(-1)}
             >
-              <img src={ASSETS.arrow} alt="" width={16} height={16} />
+              Prev
             </button>
             <button
               type="button"
-              className={styles.arrowBtn}
+              className={styles.navBtn}
               aria-label="Next testimonial"
               onClick={() => go(1)}
             >
-              <img src={ASSETS.arrow} alt="" width={16} height={16} />
+              Next
             </button>
           </div>
         </div>

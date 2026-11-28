@@ -252,7 +252,7 @@ export default function CaseStudy({ project, study, next }: Props) {
         <FadeIn className={styles.cta}>
           <p className={styles.ctaTitle}>Have a project like this in mind?</p>
           <Link href="/#contact" className={styles.ctaButton}>
-            Start a project <span aria-hidden="true">↗</span>
+            Start a project
           </Link>
         </FadeIn>
       </section>
@@ -264,7 +264,7 @@ export default function CaseStudy({ project, study, next }: Props) {
             <p className={styles.label}>Next project</p>
             <p className={styles.nextTitle}>{next.title}</p>
             <p className={styles.nextMeta}>
-              {next.tag} · {next.year} <span aria-hidden="true">↗</span>
+              {next.tag} · {next.year}
             </p>
           </div>
           <div className={styles.nextImage}>

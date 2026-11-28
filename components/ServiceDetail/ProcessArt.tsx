@@ -9,7 +9,7 @@ import styles from "./ProcessArt.module.css";
  * - discover: tumpukan dokumen + kaca pembesar yang memindai + gelombang sinyal
  * - sketch:   panel layar datar, wireframe tergambar, kartu mengambang
  * - build:    kubus-kubus turun dan tersusun di atas papan
- * - launch:   kotak paket, tutup terangkat, panah naik + gelombang
+ * - launch:   kotak paket, tutup terangkat, kubus kecil naik + gelombang
  * Animasi hanya jalan saat terlihat di layar.
  */
 
@@ -139,12 +139,8 @@ function Discover({ hatch }: { hatch: string }) {
         <circle cx="0" cy="0" r="14" className={styles.detail} />
         <line x1="14" y1="14" x2="30" y2="30" className={styles.handle} />
       </g>
-
-      {/* Gelombang sinyal + panah masuk */}
+      {/* Gelombang sinyal */}
       <Waves x={268} y={58} />
-      <g className={styles.arrowIn}>
-        <path className={styles.stroke} d="M 250 40 L 232 52 M 232 52 L 236 42 M 232 52 L 242 54" />
-      </g>
     </>
   );
 }
@@ -186,11 +182,6 @@ function Sketch({ hatch }: { hatch: string }) {
           <TopLine o={{ ox: 238, oy: 34 }} x1={8} x2={34} y={10} z={4} />
           <TopLine o={{ ox: 238, oy: 34 }} x1={8} x2={24} y={18} z={4} />
         </Box>
-      </g>
-
-      {/* Panah menunjuk ke panel */}
-      <g className={styles.arrowNudge}>
-        <path className={styles.stroke} d="M 206 108 L 190 122 M 190 122 L 192 112 M 190 122 L 200 123" />
       </g>
       <Waves x={58} y={150} flip rotate={20} />
     </>
@@ -245,9 +236,9 @@ function Launch({ hatch }: { hatch: string }) {
       <polygon className={styles.shadow} points={poly(o, [[-10, -10, 0], [80, -10, 0], [80, 80, 0], [-10, 80, 0]])} />
       {/* Badan kotak */}
       <Box o={o} x={0} y={0} z={0} w={70} d={70} h={44} hatch={hatch} />
-      {/* Panah naik — digambar sebelum tutup, jadi terlihat keluar dari dalam paket */}
+      {/* Kubus kecil naik keluar dari paket — digambar sebelum tutup */}
       <g className={styles.rise}>
-        <path className={styles.arrowFill} d="M 160 34 L 174 52 L 166 52 L 166 70 L 154 70 L 154 52 L 146 52 Z" />
+        <Box o={o} x={22} y={22} z={30} w={26} d={26} h={18} hatch={hatch} />
       </g>
       {/* Tutup yang terangkat */}
       <g className={styles.lid}>

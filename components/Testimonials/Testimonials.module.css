@@ -288,20 +288,23 @@
   gap: 8px;
 }
 
-.arrowBtn {
-  display: flex;
-  padding: 12px;
-  border-radius: var(--radius-pill);
+/* Tombol Prev / Next — kotak bergaris, putih saat hover */
+.navBtn {
+  padding: 10px 16px;
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text-muted);
+  font-family: var(--font-geist);
+  font-size: 15px;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.navBtn:hover {
   background: var(--color-text);
-  transition: transform 0.2s;
-}
-
-.arrowBtn:hover {
-  transform: scale(1.06);
-}
-
-.prev img {
-  transform: scaleX(-1);
+  border-color: var(--color-text);
+  color: #000;
 }
 
 @media (max-width: 700px) {

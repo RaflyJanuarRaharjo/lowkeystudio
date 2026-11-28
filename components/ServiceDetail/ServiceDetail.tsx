@@ -178,7 +178,7 @@ export default function ServiceDetail({ service, index, page, next }: Props) {
         <FadeIn className={cs.cta}>
           <p className={cs.ctaTitle}>Need {service.title.toLowerCase()} for your project?</p>
           <Link href="/#contact" className={cs.ctaButton}>
-            Start a project <span aria-hidden="true">↗</span>
+            Start a project
           </Link>
         </FadeIn>
       </section>
@@ -190,7 +190,7 @@ export default function ServiceDetail({ service, index, page, next }: Props) {
             <p className={cs.label}>Next service</p>
             <p className={cs.nextTitle}>{next.title}</p>
             <p className={cs.nextMeta}>
-              {next.description} <span aria-hidden="true">↗</span>
+              {next.description}
             </p>
           </div>
           <div className={cs.nextImage}>

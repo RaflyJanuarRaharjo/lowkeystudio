@@ -109,20 +109,6 @@
   }
 }
 
-.arrowIn {
-  animation: nudgeIn 1.8s ease-in-out infinite;
-}
-
-@keyframes nudgeIn {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(-6px, 4px);
-  }
-}
-
 /* ---------- Sketch ---------- */
 .wire {
   fill: rgba(255, 255, 255, 0);
@@ -166,20 +152,6 @@
   }
   50% {
     transform: translateY(-8px);
-  }
-}
-
-.arrowNudge {
-  animation: nudgeDown 1.8s ease-in-out infinite;
-}
-
-@keyframes nudgeDown {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(-5px, 5px);
   }
 }
 
@@ -230,10 +202,6 @@
   }
 }
 
-.arrowFill {
-  fill: #fff;
-}
-
 .rise {
   animation: rise 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
@@ -241,14 +209,14 @@
 @keyframes rise {
   0% {
     opacity: 1;
-    transform: translateY(24px);
+    transform: translateY(30px);
   }
   75% {
     opacity: 1;
   }
   100% {
     opacity: 0;
-    transform: translateY(-30px);
+    transform: translateY(-50px);
   }
 }
 

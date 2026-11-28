@@ -134,7 +134,6 @@ export default function Projects() {
               </PixelReveal>
 
               <span className={styles.viewCase} aria-hidden="true">
-                <span className={styles.viewCaseIcon}>↗</span>
                 View case
               </span>
             </a>
