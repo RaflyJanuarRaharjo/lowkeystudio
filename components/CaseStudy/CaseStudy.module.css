@@ -1,0 +1,458 @@
+.page {
+  --ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --label-col: 240px;
+  --row-gap: 160px;
+}
+
+/* Reset margin/padding bawaan browser */
+.page dd,
+.page figure,
+.page ol,
+.page ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding-top: 200px;
+  padding-bottom: 80px;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 64px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  transition: color 0.2s ease;
+}
+
+.back span {
+  transition: transform 0.3s var(--ease);
+}
+
+.back:hover {
+  color: var(--color-text);
+}
+
+.back:hover span {
+  transform: translateX(-4px);
+}
+
+.eyebrow,
+.label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+
+/* Kotak pixel kecil, sama seperti SectionHeader */
+.eyebrow::before,
+.label::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  background: var(--color-text);
+}
+
+.eyebrow {
+  margin-bottom: 24px;
+}
+
+.title {
+  display: block;
+  font-family: var(--font-geist);
+  font-weight: 500;
+  font-size: clamp(48px, 8vw, 120px);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.tagline {
+  margin-top: 24px;
+  max-width: 560px;
+  font-size: 24px;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--color-text-muted);
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 96px;
+  border-top: 1px solid var(--color-border);
+}
+
+.metaItem {
+  padding: 20px 24px 0 0;
+}
+
+.metaItem dt {
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+
+.metaItem dd {
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--color-text-strong);
+}
+
+/* ---------- Cover ---------- */
+.cover {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--color-card);
+}
+
+/* Lebih tinggi sedikit dari kotaknya supaya parallax tidak memperlihatkan tepi */
+.coverParallax {
+  position: absolute;
+  inset: -8% 0;
+}
+
+.fill {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.imgCover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imgCropped {
+  position: absolute;
+  max-width: none;
+}
+
+/* ---------- Baris: label kiri, isi kanan ---------- */
+.row {
+  display: grid;
+  grid-template-columns: var(--label-col) 1fr;
+  gap: 40px;
+  margin-top: var(--row-gap);
+}
+
+.row > .label {
+  align-self: start;
+  padding-top: 10px;
+}
+
+.lead {
+  max-width: 920px;
+  font-family: var(--font-geist);
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+
+.subTitle {
+  margin-bottom: 16px;
+  font-family: var(--font-geist);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+
+.body {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Gallery ---------- */
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: var(--row-gap);
+}
+
+.shot {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-card);
+}
+
+.shotFull {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 9;
+}
+
+.shotHalf {
+  aspect-ratio: 4 / 5;
+}
+
+/* ---------- Process ---------- */
+.process {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+}
+
+.step {
+  padding: 24px 32px 0 0;
+}
+
+.step + .step {
+  padding-left: 32px;
+  border-left: 1px solid var(--color-border);
+}
+
+.stepNum {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-faint);
+}
+
+.stepTitle {
+  margin: 48px 0 12px;
+  font-family: var(--font-geist);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+
+.stepText {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Results ---------- */
+.results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+}
+
+.resultValue {
+  font-family: var(--font-geist);
+  font-weight: 500;
+  font-size: 64px;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.resultLabel {
+  margin-top: 12px;
+  font-size: 16px;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Deliverables ---------- */
+.deliverables {
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+}
+
+.deliverable {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-family: var(--font-geist);
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+
+.deliverable::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--color-text-faint);
+}
+
+/* ---------- Next project ---------- */
+.nextWrap {
+  margin-top: 200px;
+}
+
+.next {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: end;
+  padding-top: 40px;
+  border-top: 1px solid var(--color-border);
+}
+
+.nextTitle {
+  margin-top: 24px;
+  font-family: var(--font-geist);
+  font-weight: 500;
+  font-size: clamp(40px, 6vw, 88px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  transition: transform 0.5s var(--ease);
+}
+
+.nextMeta {
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+
+.nextMeta span {
+  display: inline-block;
+  margin-left: 6px;
+  transition: transform 0.3s var(--ease);
+}
+
+.nextImage {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--color-card);
+  opacity: 0.5;
+  transition: opacity 0.5s var(--ease);
+}
+
+.nextImage img {
+  transition: transform 0.9s var(--ease);
+}
+
+.next:hover .nextTitle {
+  transform: translateX(12px);
+}
+
+.next:hover .nextMeta span {
+  transform: translate(3px, -3px);
+}
+
+.next:hover .nextImage {
+  opacity: 1;
+}
+
+.next:hover .nextImage img {
+  transform: scale(1.04);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .page {
+    --row-gap: 96px;
+  }
+
+  .hero {
+    padding-top: 140px;
+    padding-bottom: 48px;
+  }
+
+  .back {
+    margin-bottom: 40px;
+  }
+
+  .tagline {
+    font-size: 18px;
+  }
+
+  .meta {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 24px;
+    margin-top: 56px;
+  }
+
+  .cover {
+    aspect-ratio: 4 / 3;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .row > .label {
+    padding-top: 0;
+  }
+
+  .lead {
+    font-size: 26px;
+  }
+
+  .twoCol,
+  .process {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .body {
+    font-size: 16px;
+  }
+
+  .step,
+  .step + .step {
+    padding: 24px 0 0;
+    border-left: 0;
+  }
+
+  .step + .step {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .stepTitle {
+    margin-top: 16px;
+  }
+
+  .gallery {
+    gap: 8px;
+  }
+
+  .shotFull {
+    aspect-ratio: 4 / 3;
+  }
+
+  .deliverable {
+    font-size: 18px;
+  }
+
+  .resultValue {
+    font-size: 48px;
+  }
+
+  .nextWrap {
+    margin-top: 120px;
+  }
+
+  .next {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .nextImage {
+    opacity: 1;
+  }
+}

@@ -17,7 +17,7 @@ const DROPDOWNS: Record<string, DropdownItem[]> = {
     title: s.title,
     description: s.description,
     image: s.image,
-    href: "#services",
+    href: "/#services",
   })),
   // Portofolio dikelompokkan per kategori (bukan per project)
   portfolio: PORTFOLIO_CATEGORIES.map((c) => {
@@ -26,7 +26,7 @@ const DROPDOWNS: Record<string, DropdownItem[]> = {
       title: c.label,
       description: `${projects.length} ${projects.length === 1 ? "project" : "projects"}`,
       image: projects[0]?.image ?? "",
-      href: "#portfolio",
+      href: "/#portfolio",
     };
   }).filter((item) => item.image),
 };
@@ -143,7 +143,7 @@ export default function Navbar() {
       <nav ref={navRef} className={styles.nav} aria-label="Main">
         <a
           ref={logoRef}
-          href="#"
+          href="/"
           className={styles.logo}
           aria-label="Lowkey Studio home"
         >
@@ -188,7 +188,7 @@ export default function Navbar() {
             })}
           </ul>
 
-          <a href="#contact" className={styles.contact} onClick={closeMobile}>
+          <a href="/#contact" className={styles.contact} onClick={closeMobile}>
             Contact Us
           </a>
 
@@ -279,7 +279,7 @@ export default function Navbar() {
           })}
         </ul>
         <a
-          href="#contact"
+          href="/#contact"
           className={styles.mobileContact}
           onClick={closeMobile}
           tabIndex={mobileOpen ? 0 : -1}

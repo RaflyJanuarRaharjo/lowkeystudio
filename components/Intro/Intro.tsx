@@ -50,8 +50,9 @@ export default function Intro() {
   const lineRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   useEffect(() => {
-    // Reduced motion: lewati intro
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    // Lewati intro kalau sudah pernah tampil (mis. kembali dari halaman study case)
+    // atau user memilih reduced motion
+    if (window.__lowkeyIntroDone || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setVisible(false);
       markDone();
       return;

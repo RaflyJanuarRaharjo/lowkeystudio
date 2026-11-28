@@ -5,6 +5,8 @@ import type { CSSProperties } from "react";
 
 export type NavLink = { label: string; href?: string; dropdown?: string; chevron?: boolean };
 export type Project = {
+  /** URL halaman detail: /work/<slug> */
+  slug: string;
   title: string;
   tag: string;
   category: string;
@@ -54,10 +56,10 @@ export const ASSETS = {
 
 /* ---------- Navbar ---------- */
 export const NAV_LINKS: NavLink[] = [
-  { label: "About", href: "#about" },
+  { label: "About", href: "/#about" },
   { label: "Service", dropdown: "services" },
   { label: "Portofolio", dropdown: "portfolio" },
-  { label: "Testimonial", href: "#testimonial" },
+  { label: "Testimonial", href: "/#testimonial" },
 ];
 
 // Dipakai di dropdown navbar (title + description) dan section Services (semua field)
@@ -145,6 +147,7 @@ export const PORTFOLIO_CATEGORIES = [
 
 export const PROJECTS: Project[] = [
   {
+    slug: "kala-living",
     title: "Kala Living",
     tag: "WEB",
     category: "web",
@@ -155,6 +158,7 @@ export const PROJECTS: Project[] = [
       "Kala Living sells handmade furniture from small workshops. We designed a site that feels like walking through a quiet showroom, with room for each piece to breathe.",
   },
   {
+    slug: "aurora-rebrand",
     title: "Aurora Rebrand",
     tag: "BRANDING",
     category: "branding",
@@ -165,6 +169,7 @@ export const PROJECTS: Project[] = [
       "Aurora had outgrown its first logo. We built a new identity around a single pixel mark that scales from packaging to app icons without losing its character.",
   },
   {
+    slug: "fintra-dashboard",
     title: "Fintra Dashboard",
     tag: "PRODUCT",
     category: "web",
@@ -175,6 +180,7 @@ export const PROJECTS: Project[] = [
       "Fintra helps funded startups manage their runway. We redesigned the dashboard so founders can see cash, burn and forecasts at a glance.",
   },
   {
+    slug: "ritme-music-app",
     title: "Ritme Music App",
     tag: "MOBILE",
     category: "mobile",
@@ -186,6 +192,7 @@ export const PROJECTS: Project[] = [
       "Ritme builds playlists around your daily rhythm. We designed a mobile app that stays out of the way while you move, with big, simple controls.",
   },
   {
+    slug: "sora-skincare",
     title: "Sora Skincare",
     tag: "WEB",
     category: "web",
@@ -197,6 +204,7 @@ export const PROJECTS: Project[] = [
       "Sora makes skincare for sensitive skin. We built an online store that explains every ingredient in plain language and makes routines easy to follow.",
   },
   {
+    slug: "nomad-coffee",
     title: "Nomad Coffee",
     tag: "PACKAGING",
     category: "branding",
@@ -302,28 +310,28 @@ export const FOOTER = {
     {
       title: "Services",
       links: [
-        { label: "Branding", href: "#services" },
-        { label: "Websites", href: "#services" },
-        { label: "Mobile Apps", href: "#services" },
-        { label: "Motion", href: "#services" },
+        { label: "Branding", href: "/#services" },
+        { label: "Websites", href: "/#services" },
+        { label: "Mobile Apps", href: "/#services" },
+        { label: "Motion", href: "/#services" },
       ],
     },
     {
       title: "Studio",
       links: [
-        { label: "About", href: "#about" },
-        { label: "Work", href: "#portfolio" },
-        { label: "Testimonials", href: "#testimonial" },
-        { label: "FAQ", href: "#faq" },
+        { label: "About", href: "/#about" },
+        { label: "Work", href: "/#portfolio" },
+        { label: "Testimonials", href: "/#testimonial" },
+        { label: "FAQ", href: "/#faq" },
       ],
     },
     {
       title: "Work",
       links: [
-        { label: "Branding", href: "#portfolio" },
-        { label: "Websites", href: "#portfolio" },
-        { label: "Mobile Apps", href: "#portfolio" },
-        { label: "All projects", href: "#portfolio" },
+        { label: "Branding", href: "/#portfolio" },
+        { label: "Websites", href: "/#portfolio" },
+        { label: "Mobile Apps", href: "/#portfolio" },
+        { label: "All projects", href: "/#portfolio" },
       ],
     },
     {

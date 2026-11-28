@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { PROJECTS } from "@/data/content";
 import { FadeIn, PixelReveal } from "@/components/effects";
@@ -118,7 +119,7 @@ export default function Projects() {
               ref={(el) => {
                 itemRefs.current[i] = el;
               }}
-              href="#portfolio"
+              href={`/work/${p.slug}`}
               className={`${styles.item} ${i === active ? styles.itemCurrent : ""}`}
               onMouseMove={onMove}
               aria-label={`View case: ${p.title}`}
@@ -151,7 +152,9 @@ export default function Projects() {
         <h2 className={styles.heading}>Our work</h2>
         {PROJECTS.map((p, i) => (
           <FadeIn key={p.title} delay={(i % 2) * 120}>
-            <ProjectCard {...p} />
+            <Link href={`/work/${p.slug}`} aria-label={`View case: ${p.title}`}>
+              <ProjectCard {...p} />
+            </Link>
           </FadeIn>
         ))}
         <a href="#portfolio" className={styles.viewAll}>
